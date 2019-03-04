@@ -1,10 +1,10 @@
-#Face-Space
+# Face-Space
 
-##About
+## About
 Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾<br>
 For the live version, click [here](http://...).
 
-##Table of contents
+## Table of contents
 * [Team](#team)
 * [License](#license)
 * [Screenshot](#screenshot)

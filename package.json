@@ -2,7 +2,7 @@
   "name": "facespace",
   "version": "1.0.0",
   "description": "Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
       "start": "node app.js",
       "test": "mocha --exit tests/*"

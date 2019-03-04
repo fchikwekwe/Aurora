@@ -1,0 +1,25 @@
+{
+  "name": "facespace",
+  "version": "1.0.0",
+  "description": "Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fchikwekwe/FaceSpace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fchikwekwe/FaceSpace/issues"
+  },
+  "homepage": "https://github.com/fchikwekwe/FaceSpace#readme",
+  "devDependencies": {
+    "eslint": "^5.15.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

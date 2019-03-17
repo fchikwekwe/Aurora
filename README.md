@@ -5,14 +5,17 @@ Face-space is an image recognition app that helps you apply make-up. 💄 💅�
 For the live version, click [here](http://...).
 
 ## Table of contents
+* [Getting Started](#getting-started)
 * [Team](#team)
 * [License](#license)
 * [Screenshot](#screenshot)
 * [Installing](#installing)
 * [Building](#building)
 * [Testing](#testing)
-* [Running](#running)
 * [Built With](#built-with)
+
+## Getting Started
+The compiled project can be run with the command `npm start`. Press `Ctrl + C` to kill http-server process.
 
 ## Team
 * **[Faith Chikwekwe](https://github.com/fchikwekwe)** - *Back End Lead*
@@ -25,7 +28,7 @@ This project is licensed under the ... License - see the [LICENSE](https://githu
 
 
 ## Built With
-This project was built with the help of: 
+This project was built with the help of:
 * [Library/API name](url) - explanation
 *
 
@@ -38,10 +41,7 @@ You can run the command `npm run dev` to start a babel-node server using nodemon
 
 ## Building
 ...<br>
-Dev branch is main. 
+Dev branch is main.
 
 ## Testing
 No automated tests have been written yet.
-
-## Running
-The compiled project can be run with the command `npm start`. Press `Ctrl + C` to kill http-server process.

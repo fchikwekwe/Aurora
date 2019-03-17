@@ -1,5 +1,7 @@
 # User Stories
 
+## See Project Wiki for Full Versions
+
 ## Profile 1
 
 Hi, I'm Bella the beauty guru and I often have to apply makeup while on the go. I usually carry a full kit with me, including a small mirror, but sometimes I need better lighting in dark spaces. I tried FaceSpace because it was recommended to me by a friend. I like it because its a quick, convenient solution to poor lighting when I'm touching up my makeup.

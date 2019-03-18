@@ -8,6 +8,10 @@
 .AppleDouble
 .LSOverride
 
+## ESLint ##
+.eslintrc.json
+.eslintrc
+
 # Icon must end with two \r
 Icon
 

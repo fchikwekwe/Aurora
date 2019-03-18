@@ -1,8 +1,8 @@
 {
     "env": {
+        "node": true,
         "browser": true,
-        "es6": true,
-        "node": true
+        "es6": true
     },
     "extends": "eslint:recommended",
     "globals": {
@@ -14,7 +14,9 @@
         "sourceType": "module"
     },
     "rules": {
-        "indent": ["error", 4],
-        "no-console": "off"
+        "no-console": "off",
+        "indent": ["error", "tab"],
+        "indent": ["error", 2],
+        "indent": ["error", 4]
     }
 }

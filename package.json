@@ -4,8 +4,8 @@
   "description": "Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾",
   "main": "app.js",
   "scripts": {
-      "start": "node app.js",
-      "test": "mocha --exit tests/*"
+    "start": "node app.js",
+    "test": "mocha --exit tests/*"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "dotenv": "^6.2.0",
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.2",
     "mocha": "^6.0.2"
   },
   "dependencies": {

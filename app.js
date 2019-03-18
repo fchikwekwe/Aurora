@@ -6,18 +6,17 @@
 require('dotenv').config();
 
 /** Require middlewares */
+const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const express = require('express');
-const config = require('./config/config');
-const app = require('./config/express');
-const routes = require('./index.route');
+
 
 /** Instantiate server */
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 /** Use middlewares */
@@ -28,7 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
-app.use(routes);
 
 /** Custom auth-checking middleware */
 const checkAuth = (req, res, next) => {
@@ -55,6 +53,7 @@ db.once('open', () => {
 });
 
 /** Require controller(s) */
+require('./controllers/index')(app);
 
 /** Port listener */
 app.listen(PORT, () => {

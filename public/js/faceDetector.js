@@ -72,7 +72,7 @@ async function runShapeDetectionApi() {
 }
 
 function displayFallbackMessage() {
-    document.querySelector('.fallback-message').classList.remove('hidden');
-    document.querySelector('canvas').classList.add('hidden');
-    document.querySelector('.links').classList.add('hidden');
+    document.getElementById('fallback-message').style.visibility="visible"
+    document.querySelector('canvas').style.visibility="hidden"
+    // document.getElementById('.links').style.visibility="hidden"
 }

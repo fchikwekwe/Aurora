@@ -9,8 +9,7 @@ For the live version, click [here](http://...).
 * [Team](#team)
 * [License](#license)
 * [Screenshot](#screenshot)
-* [Installing](#installing)
-* [Building](#building)
+* [Installing & Starting](#installing-&-starting)
 * [Testing](#testing)
 * [Built With](#built-with)
 
@@ -22,7 +21,7 @@ The compiled project can be run with the command `npm start`. Press `Ctrl + C` t
 * **[Stephanie Cherubin](https://github.com/StephanieCherubin)** - *Front End Lead*
 
 ## License
-This project is licensed under the ... License - see the [LICENSE](https://github.com/fchikwekwe/...) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/fchikwekwe/FaceSpace/blob/dev/LICENSE) file for details
 
 ## Screenshot
 
@@ -34,18 +33,13 @@ This project is licensed under the ... License - see the [LICENSE](https://githu
 
 ## Built With
 This project was built with the help of:
-* [Library/API name](url) - explanation
+* [Shape Detection API](https://wicg.github.io/shape-detection-api/) - This API provides face detector for live video and images. In addition, it can detect bar codes and words.
 
-## Installing
-You would need [Node.js](https://nodejs.org) to install and run scripts.
-Clone the project project and run the command `npm install`.
-
-## Developing
-You can run the command `npm run dev` to start a babel-node server using nodemon. Browser access is at `http://localhost:3000/`.
-
-## Building
-...<br>
-Dev branch is main.
+## Installing & Starting
+You will need [Node.js](https://nodejs.org) to install and run scripts.<br>
+Clone the project project and run the command `npm install`.<br>
+You can run the command `npm start` to start a server using nodemon. <br>
+Browser access is at `http://localhost:3000/`.
 
 ## Testing
 No automated tests have been written yet.

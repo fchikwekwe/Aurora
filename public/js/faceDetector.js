@@ -59,7 +59,10 @@ async function runShapeDetectionApi() {
                 context.font = '24px Mononoki';
 
                 renderLocked = false;
-            });
+            })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
     }
 

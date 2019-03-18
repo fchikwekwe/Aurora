@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-if (window.FaceDetector()) {
+if (window.FaceDetector) {
     runShapeDetectionApi();
 } else {
     displayFallbackMessage();
@@ -26,9 +26,9 @@ async function runShapeDetectionApi() {
         if (!video.paused) {
             renderLocked = true;
 
-            Promise(
-                faceDetector.detect(video).catch((error) => console.error(error))
-            ).then((detectedFaces = []) => {
+            Promise.all([
+                faceDetector.detect(video).catch((error) => console.error(error)),
+            ]).then(([detectedFaces = []]) => {
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
@@ -59,10 +59,7 @@ async function runShapeDetectionApi() {
                 context.font = '24px Mononoki';
 
                 renderLocked = false;
-            })
-                .catch((err) => {
-                    console.log(err);
-                })
+            });
         }
     }
 

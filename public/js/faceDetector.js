@@ -46,9 +46,16 @@ async function runShapeDetectionApi() {
 
                     if (detectedFace.landmarks) {
                         detectedFace.landmarks.forEach((landmark) => {
-                            context.beginPath();
-                            context.arc(landmark.locations[0].x, landmark.locations[0].y, 5, 0, Math.PI * 2);
-                            context.fill();
+                            if (landmark.type == "mouth"){
+                                context.beginPath();
+                                context.arc()
+                            } else if (landmark.type == "eye"){
+                                context.beginPath();
+                                context.arc()
+                            }
+                            // context.beginPath();
+                            // context.arc(landmark.locations[0].x, landmark.locations[0].y, 5, 0, Math.PI * 2);
+                            // context.fill();
                             // context.fillText(landmark.type, landmark.locations[0].x - 10, landmark.locations[0].y + 30);
                         })
                     } else {
@@ -69,7 +76,7 @@ async function runShapeDetectionApi() {
 
     (function renderLoop() {
         counter += 1;
-        console.log("counter", counter);
+        // console.log("counter", counter);
 
         requestAnimationFrame(renderLoop);
         if (counter % 10 == 0) {

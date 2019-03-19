@@ -26,8 +26,7 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            res.redirect('/dashboard');
-            // res.redirect('/app');
+            res.redirect('/camera');
         } catch (err) {
             console.log(err);
         }
@@ -67,15 +66,14 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            return res.redirect('/dashboard');
-            // return res.redirect('/app');
+            return res.redirect('/camera');
         });
     });
 
     // LOGIN
     app.get('/login', (req, res) => {
         const currentUser = req.user;
-        res.render('login', { currentUser });
+        res.render('login-signup', { currentUser });
     });
 
     // LOGOUT

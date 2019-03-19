@@ -46,17 +46,34 @@ async function runShapeDetectionApi() {
 
                     if (detectedFace.landmarks) {
                         detectedFace.landmarks.forEach((landmark) => {
+                            const x = landmark.locations[0].x; // 75
+                            const y = landmark.locations[0].y; // 40
                             if (landmark.type == "mouth"){
+                                // console.log("mouth");
                                 context.beginPath();
-                                context.arc()
+                                context.moveTo(x, y)
+                                context.bezierCurveTo(x, y + 3, x - 5, y - 15, x - 20, y - 15);
+                                context.bezierCurveTo(x - 55, y - 15, x - 55, y + 22.5, x - 55, y +22.5);
+                                context.bezierCurveTo(x - 55, y + 40, x - 35, y + 62, x, y + 80);
+                                context.fill();
+                                // heart example
+                                // ctx.beginPath();
+                                // ctx.moveTo(75, 40);
+                                // ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+                                // ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+                                // ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+                                // ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+                                // ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+                                // ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+                                // ctx.fill();
                             } else if (landmark.type == "eye"){
                                 context.beginPath();
-                                context.arc()
+                                // context.arc()
                             }
                             // context.beginPath();
-                            // context.arc(landmark.locations[0].x, landmark.locations[0].y, 5, 0, Math.PI * 2);
+                            // context.arc(x, y, 5, 0, Math.PI * 2);
                             // context.fill();
-                            // context.fillText(landmark.type, landmark.locations[0].x - 10, landmark.locations[0].y + 30);
+                            // context.fillText(landmark.type, x - 10, y + 30);
                         })
                     } else {
                         console.log("No landmarks detected.");

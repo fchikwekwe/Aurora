@@ -54,6 +54,7 @@ db.once('open', () => {
 
 /** Require controller(s) */
 require('./controllers/index')(app);
+require('./controllers/auth')(app);
 
 /** Port listener */
 app.listen(PORT, () => {

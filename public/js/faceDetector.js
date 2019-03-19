@@ -65,11 +65,19 @@ async function runShapeDetectionApi() {
         }
     }
 
+    let counter = 0;
+
     (function renderLoop() {
+        counter += 1;
+        console.log("counter", counter);
+
         requestAnimationFrame(renderLoop);
-        if (!renderLocked) {
-            render();
+        if (counter % 10 == 0) {
+            if (!renderLocked) {
+                render();
+            }
         }
+
     })();
 }
 

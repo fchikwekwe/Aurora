@@ -47,10 +47,12 @@ async function runShapeDetectionApi() {
                     if (detectedFace.landmarks) {
                         detectedFace.landmarks.forEach((landmark) => {
                             context.beginPath();
-                            context.arc(landmark.locations.x, landmark.locations.y, 5, 0, Math.PI * 2);
+                            context.arc(landmark.locations[0].x, landmark.locations[0].y, 5, 0, Math.PI * 2);
                             context.fill();
-                            context.fillText(landmark.type, landmark.locations.x + 10, landmark.locations.y + 4);
-                        });
+                            // context.fillText(landmark.type, landmark.locations[0].x - 10, landmark.locations[0].y + 30);
+                        })
+                    } else {
+                        console.log("No landmarks detected.");
                     }
                 });
 
@@ -74,5 +76,4 @@ async function runShapeDetectionApi() {
 function displayFallbackMessage() {
     document.getElementById('fallback-message').style.visibility="visible"
     document.querySelector('canvas').style.visibility="hidden"
-    // document.getElementById('.links').style.visibility="hidden"
 }

@@ -2,7 +2,7 @@
 
 require('@tensorflow/tfjs-node');
 
-const faceapi = require('face-api.js');
+const faceapi = require('../public/js/face-api.js');
 const canvas  = require('canvas');
 // const fetch = require('node-fetch');
 // const path = require('path');
@@ -30,14 +30,7 @@ module.exports = (app) => {
         const net = new faceapi.TinyFaceDetector();
         // console.log(faceapi.nets);
         await net.loadFromDisk(MODELS_URL);
-        
-        const input = 'inputVideo';
-        const detection = await faceapi.detectSingleFace(input);
-        console.log("DETECTION", detection);
 
-        const result = detection.withFaceLandmarks().withFaceDescriptors();
-
-        console.log("RESULT", result);
         res.render('webcam');
     });
 };

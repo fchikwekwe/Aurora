@@ -14,6 +14,7 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const faceapi = require('face-api.js');
 
 /** Instantiate server */
 const app = express();

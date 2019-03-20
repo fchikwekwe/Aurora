@@ -7,7 +7,7 @@ module.exports = (app) => {
     // SIGN-UP GET
     app.get('/sign-up', (req, res) => {
         const currentUser = req.user;
-        res.render('login-signup', { currentUser });
+        res.render('login', { currentUser });
     });
 
     // SIGN-UP POST; right now can only use username or email for sign-up
@@ -73,7 +73,7 @@ module.exports = (app) => {
     // LOGIN
     app.get('/login', (req, res) => {
         const currentUser = req.user;
-        res.render('login-signup', { currentUser });
+        res.render('login', { currentUser });
     });
 
     // LOGOUT

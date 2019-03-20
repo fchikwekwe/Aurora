@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 module.exports = (app) => {
-    // SIGN-UP GET
-    app.get('/sign-up', (req, res) => {
+    // LOGIN AND SIGN-UP GET
+    app.get('/login-signup', (req, res) => {
         const currentUser = req.user;
-        res.render('login', { currentUser });
+        res.render('login-signup', { currentUser });
     });
 
     // SIGN-UP POST; right now can only use username or email for sign-up
@@ -71,10 +71,10 @@ module.exports = (app) => {
     });
 
     // LOGIN
-    app.get('/login', (req, res) => {
-        const currentUser = req.user;
-        res.render('login', { currentUser });
-    });
+    // app.get('/login', (req, res) => {
+    //     const currentUser = req.user;
+    //     res.render('login', { currentUser });
+    // });
 
     // LOGOUT
     app.get('/logout', (req, res) => {

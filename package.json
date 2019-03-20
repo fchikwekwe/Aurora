@@ -38,12 +38,9 @@
     "jsonwebtoken": "^8.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.4.17",
-<<<<<<< HEAD
     "normalize.css": "^8.0.1",
-=======
     "node-fetch": "^2.3.0",
     "node-fetch-polyfill": "^2.0.6",
->>>>>>> 6181fc8adb552f86e161e8a350819f5bbd8405dc
     "path": "^0.12.7"
   }
 }

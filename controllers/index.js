@@ -12,7 +12,7 @@ const { Canvas, Image, ImageData } = canvas;
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
 // faceapi.env.monkeyPatch({ fetch: fetch });
 
-const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/public/models/';
+const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/public/weights/';
 
 module.exports = (app) => {
     // ROOT
@@ -27,9 +27,11 @@ module.exports = (app) => {
 
     // Camera route that renders central app
     app.get('/example', async (req, res) => {
-        const net = new faceapi.TinyFaceDetector();
+        const tiny = new faceapi.TinyFaceDetector();
+        const ssd = new faceapi.SsdMobilenetv1();
         // console.log(faceapi.nets);
-        await net.loadFromDisk(MODELS_URL);
+        await tiny.loadFromDisk(MODELS_URL);
+        await ssd.loadFromDisk(MODELS_URL);
 
         res.render('webcam');
     });

@@ -26,13 +26,13 @@ module.exports = (app) => {
     });
 
     // Camera route that renders central app
-    app.get('/example', async (req, res) => {
+    app.get('/video', async (req, res) => {
         const tiny = new faceapi.TinyFaceDetector();
         const ssd = new faceapi.SsdMobilenetv1();
         // console.log(faceapi.nets);
         await tiny.loadFromDisk(MODELS_URL);
         await ssd.loadFromDisk(MODELS_URL);
 
-        res.render('webcam');
+        res.render('facecam');
     });
 };

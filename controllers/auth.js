@@ -18,10 +18,12 @@ module.exports = (app) => {
             console.log(user);
             await user.save();
         } catch (err) {
-            if (err.name == 'ValidationError') {
+            if (err.name == 'ValidationError'|| err.code == 11000) {
                 console.log(err);
-                res.render('error', { err });
+                console.log("ERR NAME", err.name)
+                res.status(400);
             }
+            console.log("ERR NAME", err.name)
             console.log(err);
         }
         let token;
@@ -31,7 +33,7 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            res.redirect('/video');
+            return res.redirect('/video');
         } catch (err) {
             console.log(err);
         }

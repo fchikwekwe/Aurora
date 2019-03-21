@@ -15,6 +15,7 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 const faceapi = require('face-api.js');
+const axios = require('axios');
 
 /** Instantiate server */
 const app = express();

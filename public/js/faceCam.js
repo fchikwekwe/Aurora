@@ -29,14 +29,16 @@
 
     updateTimeStats(Date.now() - ts)
 
-    if (result && wantLandmarks) {
-        var element = document.getElementById('overlay');
-        element.setAttribute('display', 'block');
-        drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
-  } else {
-        var element = document.getElementById('overlay');
-        element.setAttribute('display', 'none');
-  }
+  //   if (result && wantLandmarks) {
+  //       var element = document.getElementById('overlay');
+  //       element.setAttribute('display', 'block');
+  //       drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+  // } else {
+  //       var element = document.getElementById('overlay');
+  //       element.setAttribute('display', 'none');
+  // }
+
+    drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
 
     setTimeout(() => onPlay())
   }

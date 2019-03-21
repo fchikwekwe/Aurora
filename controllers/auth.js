@@ -18,12 +18,12 @@ module.exports = (app) => {
             console.log(user);
             await user.save();
         } catch (err) {
-            if (err.name == 'ValidationError'|| err.code == 11000) {
-                console.log(err);
-                console.log("ERR NAME", err.name)
-                res.status(400);
-            }
-            console.log("ERR NAME", err.name)
+            // if (err.name == 'ValidationError'|| err.code == 11000) {
+            //     console.log(err);
+            //     console.log("ERR NAME", err.name)
+            //     res.st
+            // }
+            // console.log("ERR NAME", err.name)
             console.log(err);
         }
         let token;

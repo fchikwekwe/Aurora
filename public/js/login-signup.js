@@ -12,7 +12,8 @@ $(document).ready(function () {
             .then((res) => {
                 // console.log("AXIOS USER", user)
                 console.log(res.data);
-                $("#errors-here").append( "<p id='server-error' style=color:red;>" + res.data + "</p>" );
+                var str = res.data.replace("User validation failed:", "")
+                $("#errors-here").append( "<p id='server-error' style='color:rgba(167, 37, 59, 0.7);'>" + str + "</p>" );
             })
             .catch((err) => {
                 console.log(err)

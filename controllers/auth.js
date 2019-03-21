@@ -19,8 +19,6 @@ module.exports = (app) => {
             await user.save();
         } catch (err) {
             if (err.name == 'ValidationError'|| err.code == 11000) {
-                console.log(err);
-                console.log("ERR NAME", err.name);
                 res.json(err.message);
             }
             console.log("ERR NAME", err.name)

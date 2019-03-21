@@ -3,7 +3,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         axios.put('/sign-up', {
-            console.log("AXIOS USER", user)
+            console.log("AXIOS USER", user),
             firstname: user.firstname,
             lastname: user.lastname,
             username: user.username,

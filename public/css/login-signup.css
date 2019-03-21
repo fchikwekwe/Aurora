@@ -117,6 +117,7 @@ input, textarea {
   background-image: none;
   border: 1px solid #a0b3b0;
   border-radius: 0;
+  color: darkgray;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }

@@ -29,7 +29,7 @@
     updateTimeStats(Date.now() - ts)
 
     if (result) {
-      drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+      drawLandmarks(videoEl, $('#overlay').get(0), [result])
     }
 
     setTimeout(() => onPlay())

@@ -15,8 +15,13 @@ module.exports = (app) => {
         let user;
         try {
             user = await new User(req.body);
+            console.log(user);
             await user.save();
         } catch (err) {
+            if (err.name == 'ValidationError') {
+                console.log(err);
+                res.render('error', { err });
+            }
             console.log(err);
         }
         let token;
@@ -26,7 +31,7 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            res.redirect('/camera');
+            res.redirect('/video');
         } catch (err) {
             console.log(err);
         }
@@ -51,6 +56,8 @@ module.exports = (app) => {
                 return res.status(401).send({
                     message: 'Password is not valid!'
                 });
+            } else {
+                console.log(user, "successfully logged in!")
             }
             const token = jwt.sign(
                 {
@@ -66,15 +73,9 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            return res.redirect('/camera');
+            return res.redirect('/video');
         });
     });
-
-    // LOGIN
-    // app.get('/login', (req, res) => {
-    //     const currentUser = req.user;
-    //     res.render('login', { currentUser });
-    // });
 
     // LOGOUT
     app.get('/logout', (req, res) => {

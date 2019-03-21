@@ -11,18 +11,29 @@ const UserSchema = new Schema({
     updatedAt: {
         type: Date,
     },
-    password: {
+    firstname: {
         type: String,
-        select: false,
-        required: true,
+        required: [true, 'Your first name cannot be blank.'],
+    },
+    lastname: {
+        type: String,
+        required: [true, 'Your last name cannot be blank.'],
     },
     username: {
         type: String,
-        required: true,
+        minlength: [2, 'Your username must be longer than six characters.'],
+        required: [true, 'Your username must be longer than six characters.'],
+        unique: true,
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'You must have a valid email address.'],
+        unique: true,
+    },
+    password: {
+        type: String,
+        select: false,
+        required: [true, 'Your password cannot be blank.'],
     },
 });
 

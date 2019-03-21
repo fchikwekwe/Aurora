@@ -28,14 +28,14 @@
         <div id="signup">
           <h1>Register for Free!</h1>
 
-          <form action="/sign-up" method="post">
+          <form id='register-submit'>
 
           <div class="top-row">
             <div class="field-wrap">
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" name="firstname" required autocomplete="off" />
+              <input type="text" name="firstname" onblur="alert('out!');" required autocomplete="off" />
             </div>
 
             <div class="field-wrap">

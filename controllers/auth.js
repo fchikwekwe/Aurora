@@ -29,9 +29,12 @@ module.exports = (app) => {
             console.log("It worked!");
             res.redirect('/video');
         } catch (err) {
-            if (err.name == 'ValidationError'|| err.code == 11000) {
-                const info = { ...req.body };
+            const info = { ...req.body };
+            if (err.name == 'ValidationError') {
                 return res.render('login-signup', { info, err: err.message });
+            } else if (err.code == 11000) {
+                const message = "Your username or email address is already in use. Use the toggle above to login instead."
+                return res.render('login-signup', { info, err: message })
             }
             console.log("ERR NAME", err.name)
             console.log(err);

@@ -16,12 +16,7 @@ module.exports = (app) => {
     // ROOT
     app.get('/', (req, res) => {
         res.render('index');
-    });
-
-    // Camera route for old API implementation
-    app.get('/camera', (req, res) => {
-        res.render('camera');
-    });
+    });  
 
     // Camera route that renders central app
     app.get('/video', async (req, res) => {

@@ -19,7 +19,7 @@ module.exports = (app) => {
             await user.save();
         } catch (err) {
             if (err.name == 'ValidationError'|| err.code == 11000) {
-                res.json(err.message);
+                return res.json(err.message);
             }
             console.log("ERR NAME", err.name)
             console.log(err);
@@ -31,10 +31,13 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            return res.redirect('/video');
+            console.log("It wokred!")
+            res.redirect('/video');
         } catch (err) {
             console.log(err);
         }
+        console.log("hmmmm")
+        return res.redirect('/');
     });
 
     app.post('/login', async (req, res) => {

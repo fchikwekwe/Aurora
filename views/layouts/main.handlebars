@@ -3,16 +3,42 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to Aurora!</title>
+
+        <title>Aurora - the Digital Mirror</title>
+
         <!-- Bootstrap core CSS -->
-        <link href="public/extras/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="extras/bootstrap/css/bootstrap.css" rel="stylesheet">
 
         <!-- Custom fonts for this template -->
-        <link href="public/extras/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="extras/fontawesome-free/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+        <!-- Face-API.js Script -->
+        <script src="js/face-api.js"></script>
 
+
+        <!-- <script src="face-api.js"></script> -->
+        <script src="js/commons.js"></script>
+        <script src="js/drawing.js"></script>
+        <script src="js/faceDetectionControls.js"></script>
+
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="extras/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="extras/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="extras/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Camera loading script -->
+        <script src="js/camera.js"></script>
+        <script src="js/faceCam.js"></script>
     </head>
     <body>
         {{> navbar}}
@@ -21,21 +47,6 @@
         </div>
 
         {{> footer}}
-        <!-- Bootstrap core JavaScript -->
-        <script src="public/extras/jquery/jquery.min.js"></script>
-        <script src="jquery-3.3.1.min.js"></script>
-        <script src="public/extras/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Plugin JavaScript -->
-        <script src="public/extras/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Camera loading script -->
-        <script src="public/js/camera.js"></script>
-        <!-- Face-API.js Script -->
-        <script src="public/js/face-api.js"></script>
-
-        <script src="public/js/faceCam.js"></script>
 
     </body>
-
 </html>

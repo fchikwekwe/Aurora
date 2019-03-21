@@ -4,15 +4,12 @@ require('@tensorflow/tfjs-node');
 
 const faceapi = require('../public/js/face-api.js');
 const canvas  = require('canvas');
-// const fetch = require('node-fetch');
-// const path = require('path');
 
 const { Canvas, Image, ImageData } = canvas;
 
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
-// faceapi.env.monkeyPatch({ fetch: fetch });
 
-const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/public/weights/';
+const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/public/';
 
 module.exports = (app) => {
     // ROOT
@@ -20,19 +17,21 @@ module.exports = (app) => {
         res.render('index');
     });
 
-    // Camera route that renders central app
+    // Camera route for old API implementation
     app.get('/camera', (req, res) => {
         res.render('camera');
     });
 
     // Camera route that renders central app
     app.get('/video', async (req, res) => {
-        const tiny = new faceapi.TinyFaceDetector();
         const ssd = new faceapi.SsdMobilenetv1();
+        const tiny = new faceapi.TinyFaceDetector();
+
         // console.log(faceapi.nets);
-        await tiny.loadFromDisk(MODELS_URL);
         await ssd.loadFromDisk(MODELS_URL);
+        await tiny.loadFromDisk(MODELS_URL);
 
         res.render('facecam');
+
     });
 };

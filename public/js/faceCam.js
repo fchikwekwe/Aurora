@@ -1,9 +1,10 @@
 
   let forwardTimes = []
+  let wantLandmarks = true
   let withBoxes = true
 
-  function onChangeHideBoundingBoxes(e) {
-    withBoxes = !$(e.target).prop('checked')
+  function onChangeHideLandmarks(e) {
+    wantLandmarks = !$(e.target).prop('checked')
   }
 
   function updateTimeStats(timeInMs) {
@@ -28,9 +29,14 @@
 
     updateTimeStats(Date.now() - ts)
 
-    if (result) {
-      drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
-    }
+    if (result && wantLandmarks) {
+        var element = document.getElementById('overlay');
+        element.setAttribute('display', 'block');
+        drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+  } else {
+        var element = document.getElementById('overlay');
+        element.setAttribute('display', 'none');
+  }
 
     setTimeout(() => onPlay())
   }

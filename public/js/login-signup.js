@@ -3,7 +3,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         axios.put('/sign-up', {
-            console.log("AXIOS USER", user)
+            user: user,
             firstname: user.firstname,
             lastname: user.lastname,
             username: user.username,
@@ -11,6 +11,7 @@ $(document).ready(function () {
             password: user.password,
         })
             .then((res) => {
+                console.log("AXIOS USER", user)
                 console.log(res);
             })
             .catch((err) => {

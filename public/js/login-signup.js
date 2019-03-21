@@ -1,24 +1,24 @@
-$(document).ready(function () {
-    $('#register-submit').submit(function(e){
-        e.preventDefault();
-
-        axios.post('/sign-up', {
-            firstname: $('#firstname').val(),
-            lastname: $('#lastname').val(),
-            username: $('#username').val(),
-            email: $('#email').val(),
-            password: $('#password').val(),
-        })
-            .then((res) => {
-                // console.log("AXIOS USER", user)
-                console.log(res.data);
-                var str = res.data.replace("User validation failed:", "")
-                $("#errors-here").append( "<p id='server-error' style='color:rgba(167, 37, 59, 0.7);'>" + str + "</p>" );
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    })
+// $(document).ready(function () {
+//     $('#register-submit').submit(function(e){
+//         e.preventDefault();
+//
+//         axios.post('/sign-up', {
+//             firstname: $('#firstname').val(),
+//             lastname: $('#lastname').val(),
+//             username: $('#username').val(),
+//             email: $('#email').val(),
+//             password: $('#password').val(),
+//         })
+//             .then((res) => {
+//                 // console.log("AXIOS USER", user)
+//                 console.log(res.data);
+//                 var str = res.data.replace("User validation failed:", "")
+//                 $("#errors-here").append( "<p id='server-error' style='color:rgba(167, 37, 59, 0.7);'>" + str + "</p>" );
+//             })
+//             .catch((err) => {
+//                 console.log(err)
+//             })
+//     })
 
     $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 

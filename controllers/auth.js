@@ -7,37 +7,35 @@ module.exports = (app) => {
     // LOGIN AND SIGN-UP GET
     app.get('/login-signup', (req, res) => {
         const currentUser = req.user;
-        res.render('login-signup', { currentUser });
+        const info = {};
+        res.render('login-signup', { currentUser, info });
     });
 
     // SIGN-UP POST; right now can only use username or email for sign-up
     app.post('/sign-up', async (req, res) => {
         let user;
         try {
-            user = await new User(req.body);
+            user = new User(req.body);
             console.log(user);
             await user.save();
-        } catch (err) {
-            if (err.name == 'ValidationError'|| err.code == 11000) {
-                return res.json(err.message);
-            }
-            console.log("ERR NAME", err.name)
-            console.log(err);
-        }
-        let token;
-        try {
+            // res.redirect
+
+            let token;
             token = await jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' });
             res.cookie('faceToken', token, {
                 maxAge: 900000,
                 httpOnly: true
             });
-            console.log("It wokred!")
+            console.log("It worked!");
             res.redirect('/video');
         } catch (err) {
+            if (err.name == 'ValidationError'|| err.code == 11000) {
+                const info = { ...req.body };
+                return res.render('login-signup', { info, err: err.message });
+            }
+            console.log("ERR NAME", err.name)
             console.log(err);
         }
-        console.log("hmmmm")
-        return res.redirect('/');
     });
 
     app.post('/login', async (req, res) => {

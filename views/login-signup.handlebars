@@ -16,7 +16,7 @@
       <div class="tab-content">
         <div id="signup">
           <h1>Register for Free!</h1>
-
+          <p id="errors-here"></p>
           <form id='register-submit'>
 
           <div class="top-row">
@@ -24,14 +24,14 @@
               <label>
                 First Name<span class="req">*</span>
               </label>
-                <input type="text" name="firstname" {{!--onblur="alert('out!');"--}} required autocomplete="off" />  
+                <input type="text" name="firstname" id="firstname" required autocomplete="off" />
             </div>
 
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text" name="lastname" required autocomplete="off"/>
+              <input type="text" name="lastname" id="lastname" required autocomplete="off"/>
             </div>
           </div>
 
@@ -39,21 +39,21 @@
             <label>
               Username<span class="req">*</span>
             </label>
-            <input type="username" name="username" required autocomplete="off"/>
+            <input type="username" name="username" id="username" required autocomplete="off"/>
           </div>
 
           <div class="field-wrap">
             <label>
               Email<span class="req">*</span>
             </label>
-            <input type="email" name="email" required autocomplete="off"/>
+            <input type="email" name="email" id="email" required autocomplete="off"/>
           </div>
 
           <div class="field-wrap">
             <label>
               Password<span class="req">*Minimum 6 characters!</span>
             </label>
-            <input type="password" name="password" required autocomplete="off"/>
+            <input type="password" name="password" id="password" required autocomplete="off"/>
           </div>
 
           <button type="submit" class="button button-block"/>Register</button>

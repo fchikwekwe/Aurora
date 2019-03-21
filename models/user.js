@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     },
     username: {
         type: String,
-        minlength: [2, 'Your username must be longer than six characters.'],
+        minlength: [6, 'Your username must be longer than six characters.'],
         required: [true, 'Your username must be longer than six characters.'],
         unique: true,
     },

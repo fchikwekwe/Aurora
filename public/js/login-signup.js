@@ -2,20 +2,20 @@ $(document).ready(function () {
     $('#register-submit').submit(function(e){
         e.preventDefault();
 
-        axios.put('/sign-up', {
-            user: user,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            username: user.username,
-            email: user.email,
-            password: user.password,
+        axios.post('/sign-up', {
+            firstname: $('#firstname').val(),
+            lastname: $('#lastname').val(),
+            username: $('#username').val(),
+            email: $('#email').val(),
+            password: $('#password').val(),
         })
             .then((res) => {
-                console.log("AXIOS USER", user)
-                console.log(res);
+                // console.log("AXIOS USER", user)
+                console.log(res.data);
+                $("#errors-here").append( "<p id='server-error' style=color:red;>" + res.data + "</p>" );
             })
             .catch((err) => {
-                console.log(err.response)
+                console.log(err)
             })
     })
 

@@ -116,8 +116,17 @@
   color: white;
   text-shadow: 2px 2px 8px #000;
 }
-  
+
 .masthead h2 {
+  font-family: 'Varela Round';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: .2rem;
+  color: rgba(167, 37, 59, 0.9);
+  text-shadow: 2px 2px 5px black;
+}
+  
+.masthead h3 {
   max-width: 20rem;
   font-size: 1rem;
   color: #fff;
@@ -143,7 +152,7 @@
     letter-spacing: .8rem
   }
 
-  .masthead h2 {
+  .masthead h3 {
     max-width: 30rem;
     font-size: 1.25rem;
   }
@@ -162,11 +171,12 @@
 
 .btn-primary {
   background-color: rgb(167, 37, 59);
+  color: #000;
 }
 
 .btn-primary:hover {
-  background-color: rgb(9, 157, 157);
-  color: black;
+  background-color: rgb(167, 37, 59);
+  color: #fff;
 }
 
 .btn-primary:focus {
@@ -183,64 +193,34 @@
   background:-webkit-gradient(linear,left top,left bottom,from(#161616),color-stop(75%,rgba(22,22,22,.9)),to(rgba(22,22,22,.8)));
   background:linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%)
 }
+.copy {
+ color: rgb(167, 37, 59);
+ text-shadow: 2px 2px 5px black;
+}
+
+.warning {
+ color: darkgray;
+}
 
 .about-section p {
   margin-bottom:5rem
+} */
+
+.contact-section {
+  padding:5rem 0 0
 }
 
-.projects-section{
-  padding:10rem 0
+.contact-section .card{ 
+  border:0;
+  border-bottom:.25rem solid #64a19d
 }
 
-.projects-section .featured-text{
-  padding:2rem
-}
-
-@media (min-width: 992px){
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: .5rem solid #64a19d
-  }
-}
-.projects-section .project-text{padding:3rem;font-size:90%
-}
-
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding:5rem;
-  }
-
-  .projects-section .project-text hr {
-    border-color: #64a19d;
-    border-width: .25rem;
-    width: 30%;
-  }
-}
-
-.signup-section {
-  padding:10rem 0;
-  background: -webkit-gradient(linear,left top,left bottom,from(rgba(22,22,22,.1)),color-stop(75%,rgba(22,22,22,.5)),to(#161616)),url(../img/bg-signup.jpg);
-  background:linear-gradient(to bottom,rgba(22,22,22,.1) 0,rgba(22,22,22,.5) 75%,#161616 100%),url(../img/bg-signup.jpg);
-  background-position:center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size:cover;
-}
-.signup-section .form-inline input {
-  -webkit-box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
-  box-shadow: 0 .1875rem .1875rem 0 rgba(0,0,0,.1)!important;
-  padding: 1.25rem 2rem;
-  height: auto;
+.contact-section .card h4 {
+  font-size:.8rem;
   font-family:'Varela Round';
-  font-size:80%;text-transform:uppercase;letter-spacing:.15rem;border:0}.contact-section{
-    padding:5rem 0 0
-  }
-  .contact-section .card{
-    border:0;border-bottom:.25rem solid #64a19d}
-    .contact-section .card h4{font-size:.8rem;
-      font-family:'Varela Round';
-      text-transform:uppercase;letter-spacing:.15rem
-    }
+  text-transform:uppercase;
+  letter-spacing:.15rem
+}
 
 .contact-section .card hr {
   border-color:#64a19d;
@@ -274,6 +254,7 @@ body {
   font-family: Nunito;
   letter-spacing: .0625em;
 }
+
 a {
   color:#64a19d;
 }

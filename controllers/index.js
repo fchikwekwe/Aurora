@@ -9,8 +9,9 @@ const { Canvas, Image, ImageData } = canvas;
 
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
 
-const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/public/';
+// const MODELS_URL = '/Users/faith1/code/courses/FaceSpace/';
 
+const MODELS_URL = 'public'
 module.exports = (app) => {
     // ROOT
     app.get('/', (req, res) => {

@@ -21,8 +21,9 @@ const UserSchema = new Schema({
     },
     username: {
         type: String,
-        minlength: [6, 'Your username must be longer than six characters.'],
-        required: [true, 'Your username must be longer than six characters.'],
+        minlength: [6, 'Your username must be at least six characters long.'],
+        maxlength: [25, 'Your username is too long.'],
+        required: [true, 'Your username cannot be blank.'],
         unique: true,
     },
     email: {
@@ -33,8 +34,12 @@ const UserSchema = new Schema({
     password: {
         type: String,
         select: false,
+        minlength: [6, 'Your password must be a least six characters long.'],
         required: [true, 'Your password cannot be blank.'],
     },
+    photoUrls: {
+        type: [String],
+    }
 });
 
 // Must use function here! ES6 => functions do not bind this!

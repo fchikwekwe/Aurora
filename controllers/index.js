@@ -14,11 +14,13 @@ const MODELS_URL = 'public/'
 module.exports = (app) => {
     // ROOT
     app.get('/', (req, res) => {
-        res.render('index');
+        const currentUser = req.user;
+        res.render('index', { currentUser });
     });
 
     // Camera route that renders central app
     app.get('/video', async (req, res) => {
+        const currentUser = req.user;
         const emailSubject = 'Here is your Aurora Selfie!',
             emailBody = `
         Hi there!
@@ -40,7 +42,7 @@ module.exports = (app) => {
             await tiny.loadFromDisk(MODELS_URL);
 
             // console.log(mailTo);
-            res.render('facecam', { mailTo });
+            res.render('facecam', { mailTo, currentUser });
         } catch (err) {
             console.log(err);
         }

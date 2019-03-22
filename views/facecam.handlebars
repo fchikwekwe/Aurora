@@ -1,19 +1,21 @@
 <!-- Materialize -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
 <!-- Face-API.js Scripts -->
 <script src="js/commons.js"></script>
 <script src="js/drawing.js"></script>
 <script src="js/faceDetectionControls.js"></script>
 <script src="js/face-api.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+
 <!-- STEPH this styling is optional -->
-<div class="margin">
-  <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
+<div style="position: relative" class="margin">
   <canvas id="overlay"></canvas>
 
-</div>
+  <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
+
 <canvas id="selfie-canvas" style="display:none;"></canvas>
 <img src="" id="selfie-image" alt="user image">
 

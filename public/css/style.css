@@ -7,7 +7,7 @@
   font-size: 80%;
   padding: .75rem;
   color: white;
-  background-color: #64a19d;
+  background-color: rgb(186,34,85)!important;
   border: 1px solid black;
 }
 
@@ -205,6 +205,7 @@
   background:-webkit-gradient(linear,left top,left bottom,from(#161616),color-stop(75%,rgba(22,22,22,.9)),to(rgba(22,22,22,.8)));
   background:linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%)
 }
+
 .copy {
  color: rgb(167, 37, 59);
  text-shadow: 2px 2px 5px black;
@@ -267,6 +268,8 @@
 body {
   font-family: Nunito;
   letter-spacing: .0625em;
+  padding-bottom: 5em;
+  background:#161616
 }
 
 a {
@@ -279,9 +282,9 @@ a:hover{
   color: #3c6360;
 }
 
-.bg-black {
-  background-color: rgb(67,67,67)!important;
-}
+/* .bg-black {
+  background-color: rgb(67,67,67)
+} */
 
 .bg-primary{
   background-color: white!important;
@@ -291,15 +294,25 @@ a:hover{
   color: #64a19d!important;
 }
 
-footer {
-  padding: 5rem 0;
-}
-
 .margin {
-  position: relative
+  margin: 20px;
 }
 
 #get-started {
   padding-top: 40px;
   font-size: 130%;
+}
+
+#overlay .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#inputVideo {
+  position: absolute;
+  margin: -180px 0 0 -240px;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
 }

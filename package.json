@@ -38,9 +38,10 @@
     "jsonwebtoken": "^8.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.4.17",
-    "normalize.css": "^8.0.1",
     "node-fetch": "^2.3.0",
     "node-fetch-polyfill": "^2.0.6",
-    "path": "^0.12.7"
+    "normalize.css": "^8.0.1",
+    "path": "^0.12.7",
+    "twitter": "^1.7.1"
   }
 }

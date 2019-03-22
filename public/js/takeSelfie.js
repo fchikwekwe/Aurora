@@ -46,4 +46,6 @@ function saveSelfieToProfile() {
             const file = new File([blob], 'aurora_selfie.png', blob)
             console.log(file)
         });
+
+
 }

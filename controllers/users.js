@@ -82,12 +82,16 @@ module.exports = (app) => {
             if (err) { return res.status(400).send({ err }) };
 
             versions.forEach((image) => {
+                console.log("about to make photo");
                 const urlArray = image.url.split('-');
+                console.log(urlArray);
                 urlArray.pop();
                 const url = urlArray.join('-');
+                console.log(url);
 
                 if (!user.photo1) {
                     user.photo1 = url;
+                    console.log("User Photo", user.photo1);
                 } else if (!user.photo2) {
                     user.photo2 = url;
                 } else if (!user.photo3) {

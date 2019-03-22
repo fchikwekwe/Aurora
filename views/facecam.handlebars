@@ -4,23 +4,26 @@
 <script src="js/drawing.js"></script>
 <script src="js/faceDetectionControls.js"></script>
 <script src="js/face-api.js"></script>
+<link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-<link rel="stylesheet" href="css/style.css">
 
-<!-- STEPH this styling is optional -->
-<div style="position: relative" class="margin">
+<div class="canvas">
   <canvas id="overlay"></canvas>
+</div>
 
-  <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
+<div class="faceCam">
+  <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
+</div>
+
 
 <canvas id="selfie-canvas" style="display:none;"></canvas>
 <img src="" id="selfie-image" alt="user image">
 
 <!-- check boxes -->
-<div class="row">
+<div class="checkbox">
   <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
   <label for="hideLandmarksCheckbox">Hide Landmarks</label>
 </div>

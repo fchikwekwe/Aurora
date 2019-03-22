@@ -5,10 +5,11 @@
   
 #mainNav .navbar-toggler {
   font-size: 80%;
-  padding: .75rem;
-  color: white;
-  background-color: rgb(186,34,85)!important;
-  border: 1px solid black;
+  margin: 0;
+  padding-bottom: 0;
+  color: white  ;
+  background-color: rgb(167, 37, 59)!important;
+  /* border: 1px solid black; */
 }
 
 #mainNav .navbar-toggler:focus{
@@ -192,7 +193,7 @@
 }
 
 .btn-primary:hover {
-  background-color: rgb(167, 37, 59);
+  background-color: rgb(167, 37, 59) !important;
   color: #000;
 }
 
@@ -230,10 +231,11 @@
 }
 
 .contact-section .card h4 {
-  font-size: 1rem;
+  font-size: 16px;
   font-family:'Varela Round';
   text-transform:uppercase;
   letter-spacing:.15rem;
+  font-weight: bolder
 }
 
 .contact-section .card hr {
@@ -243,7 +245,7 @@
 }
 
 .contact-section .social {
-    margin-top:5rem;
+  margin-top:5rem;
 }
 
 .contact-section .social a{
@@ -266,25 +268,20 @@
 }
 
 body {
-  font-family: Nunito;
   letter-spacing: .0625em;
   padding-bottom: 5em;
   background:#161616
 }
 
 a {
-  color:#64a19d;
+  color: rgb(167, 37, 59);
 }
 
 a:focus,
-a:hover{
+a:hover {
   text-decoration: none;
-  color: #3c6360;
+  color: white;
 }
-
-/* .bg-black {
-  background-color: rgb(67,67,67)
-} */
 
 .bg-primary{
   background-color: white!important;
@@ -294,25 +291,20 @@ a:hover{
   color: #64a19d!important;
 }
 
-.margin {
-  margin: 20px;
-}
-
 #get-started {
   padding-top: 40px;
   font-size: 130%;
 }
 
 #overlay .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  top: 28em;
+  left: 90%;
 }
 
 #inputVideo {
   position: absolute;
-  margin: -180px 0 0 -240px;
-  top: 50%;
-  left: 50%;
+  top: 12em;
+  left: 20%;
   z-index: -1;
 }

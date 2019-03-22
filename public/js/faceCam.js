@@ -1,23 +1,23 @@
 
-  let forwardTimes = []
-  let withBoxes = true
+let forwardTimes = []
+let withBoxes = true
 
-  function onChangeHideBoundingBoxes(e) {
+function onChangeHideBoundingBoxes(e) {
     withBoxes = !$(e.target).prop('checked')
-  }
+}
 
-  function updateTimeStats(timeInMs) {
+function updateTimeStats(timeInMs) {
     forwardTimes = [timeInMs].concat(forwardTimes).slice(0, 30)
     const avgTimeInMs = forwardTimes.reduce((total, t) => total + t) / forwardTimes.length
     $('#time').val(`${Math.round(avgTimeInMs)} ms`)
     $('#fps').val(`${faceapi.round(1000 / avgTimeInMs)}`)
-  }
+}
 
-  async function onPlay() {
+async function onPlay() {
     const videoEl = $('#inputVideo').get(0)
 
     if(videoEl.paused || videoEl.ended || !isFaceDetectionModelLoaded())
-      return setTimeout(() => onPlay())
+        return setTimeout(() => onPlay())
 
 
     const options = getFaceDetectorOptions()
@@ -29,13 +29,13 @@
     updateTimeStats(Date.now() - ts)
 
     if (result) {
-      drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+        drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
     }
 
     setTimeout(() => onPlay())
-  }
+}
 
-  async function run() {
+async function run() {
     // load face detection and face landmark models
     await changeFaceDetector(TINY_FACE_DETECTOR)
     await faceapi.loadFaceLandmarkModel('/')
@@ -46,12 +46,12 @@
     const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
     const videoEl = $('#inputVideo').get(0)
     videoEl.srcObject = stream
-  }
+}
 
-  function updateResults() {}
+function updateResults() {}
 
-  $(document).ready(function() {
+$(document).ready(function() {
     // renderNavBar('#navbar', 'webcam_face_landmark_detection')
     initFaceDetectionControls()
     run()
-  })
+})

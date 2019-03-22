@@ -30,8 +30,6 @@ function takeSelfie(){
 }
 
 function downloadSelfie() {
-    // var canvas = document.getElementById('selfie-canvas');
-
     // Get an image dataURL from the canvas.
     var imageDataURL = canvas.toDataURL('image/png');
 

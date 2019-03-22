@@ -36,3 +36,14 @@ function downloadSelfie() {
     // Set the href attribute of the download button.
     document.querySelector('#downloadSelfie').href = imageDataURL;
 }
+
+function saveSelfieToProfile() {
+    const img = document.getElementById('selfie-image');
+
+    fetch(img.src)
+        .then(res => res.blob())
+        .then(blob => {
+            const file = new File([blob], 'aurora_selfie.png', blob)
+            console.log(file)
+        });
+}

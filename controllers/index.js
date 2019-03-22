@@ -38,8 +38,8 @@ module.exports = (app) => {
             // console.log(faceapi.nets);
             await ssd.loadFromDisk(MODELS_URL);
             await tiny.loadFromDisk(MODELS_URL);
-            
-            console.log(mailTo);
+
+            // console.log(mailTo);
             res.render('facecam', { mailTo });
         } catch (err) {
             console.log(err);

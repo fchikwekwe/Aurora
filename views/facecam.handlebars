@@ -30,11 +30,22 @@
 <!-- check boxes -->
 
 <div id="selfie-buttons">
-    <button type="button" id="takeSelfie" onclick="takeSelfie();">Take Selfie</button>
+    <button type="button" id="takeSelfie" onclick="takeSelfie();">
+        Take Selfie
+    </button>
     <a id="downloadSelfie" href="#" download="aurora_selfie.png">
-        <button>Download Selfie</button>
+        <button>
+            Download Selfie
+        </button>
     </a>
+    <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
+        Save to Profile
+    </button>
+    <button type="button" onclick="javascript: window.location.href='mailto:?subject={{emailSubject}}?attach='">
+        Email Photo
+    </button>
 </div>
+
 
 <!-- Custom Script for Face-API -->
 <script src="js/faceCam.js"></script>

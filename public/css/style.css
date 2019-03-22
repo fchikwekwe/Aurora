@@ -1,0 +1,310 @@
+#mainNav {
+  min-height: 56px;
+  background-color: transparent;
+}
+  
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  margin: 0;
+  padding-bottom: 0;
+  color: white  ;
+  background-color: rgb(167, 37, 59)!important;
+  /* border: 1px solid black; */
+}
+
+#mainNav .navbar-toggler:focus{
+  outline: 0;
+}
+
+#mainNav .navbar-brand {
+  color: white;
+  font-weight: 700;
+  padding: .9rem 0;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white,80%);
+  outline: 0;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active,
+#mainNav .navbar-nav .nav-item:focus {
+  outline: 0;
+  background-color: transparent;
+}
+
+@media (min-width:992px) {
+  #mainNav {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  background-color: transparent;
+  -webkit-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
+}
+
+#mainNav .navbar-brand {
+  padding: .5rem 0;
+  color: rgb(186,34,85);
+  text-shadow: 2px 2px 8px #000;
+}
+
+#mainNav .nav-link {
+  -webkit-transition: none;
+  transition: none;
+  padding: 2rem 1.5rem;
+  color:  white;
+  text-shadow: 2px 2px 8px #000;
+}
+
+#mainNav .nav-link:hover {
+  color: rgba(255,255,255,.75);
+}
+
+#mainNav .nav-link:active{
+    color: #fff;
+}
+  
+#mainNav.navbar-shrink {
+  background-color: #fff;
+}
+
+#mainNav.navbar-shrink .navbar-brand {
+  color: #161616;
+}
+
+#mainNav.navbar-shrink .nav-link {
+  color: white;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-bottom:.25rem solid transparent
+}
+
+#mainNav.navbar-shrink .nav-link:hover {
+  color:#64a19d
+}
+
+#mainNav.navbar-shrink .nav-link:active {
+  color: #467370;
+}
+
+#mainNav.navbar-shrink .nav-link.active {
+    color: #64a19d;
+    outline: 0;
+    border-bottom: .25rem solid #64a19d;
+  }
+}
+
+.masthead {
+  position: relative;
+  width:100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: -webkit-gradient(linear,left top,left bottom,from(rgba(22,22,22,.1)),color-stop(75%,rgba(22,22,22,.5)),to(#161616)),url(../img/makeup-brushes-pink-orange.jpg);
+  background:linear-gradient(to bottom,rgba(22,22,22,.1) 0,rgba(22,22,22,.5) 75%,#161616 100%),url(../img/makeup-brushes-pink-orange.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.masthead h1 {
+  font-family: 'Varela Round';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: .8rem;
+  color: white;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.masthead h2 {
+  font-family: 'Varela Round';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: .2rem;
+  color: rgba(167, 37, 59, 0.9);
+  text-shadow: 2px 2px 5px black;
+}
+  
+.masthead h3 {
+  max-width: 20rem;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 8px #000;
+}
+
+@media (min-width:768px) {
+  .masthead h1 {
+    font-size:4rem;
+    line-height:4rem;
+  }
+}
+
+@media (min-width:768px) {
+  .masthead {
+    height:100vh;
+    padding:0
+  }
+
+  .masthead h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+    letter-spacing: .8rem
+  }
+
+  .masthead h3 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
+.btn {
+  box-shadow: 3px 3px 5px 4px rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 2rem;
+  font-family: 'Varela Round';
+  font-size: 90%;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  border: 0;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.btn-primary {
+  background-color: rgb(167, 37, 59);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: rgb(167, 37, 59) !important;
+  color: #000;
+}
+
+.btn-primary:focus {
+  color:#fff;
+}
+
+.about-section {
+  padding-top:10rem;
+  background:-webkit-gradient(linear,left top,left bottom,from(#161616),color-stop(75%,rgba(22,22,22,.9)),to(rgba(22,22,22,.8)));
+  background:linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%)
+}
+
+.copy {
+ color: rgb(167, 37, 59);
+ text-shadow: 2px 2px 5px black;
+}
+
+.warning {
+ color: darkgray;
+}
+
+.about-section p {
+  margin-bottom:5rem
+} */
+
+.contact-section {
+  padding:5rem 0 0
+}
+
+.contact-section .card{ 
+  border:0;
+  border-bottom:.25rem solid rgb(186,34,85);
+  box-shadow: 5px 10px 18px black;
+}
+
+.contact-section .card h4 {
+  font-size: 16px;
+  font-family:'Varela Round';
+  text-transform:uppercase;
+  letter-spacing:.15rem;
+  font-weight: bolder
+}
+
+.contact-section .card hr {
+  border-color:rgb(186,34,85);
+  border-width:.25rem;
+  width:3rem
+}
+
+.contact-section .social {
+  margin-top:5rem;
+}
+
+.contact-section .social a{
+  text-align:center;
+  height:3rem;
+  width:3rem;
+  background:rgba(255,255,255,.1);
+  border-radius:100%;
+  line-height:3rem;
+  color:rgba(255,255,255,.3);
+}
+
+.contact-section .social a:hover {
+  color:rgba(255,255,255,.5)
+
+}
+
+.contact-section .social a:active {
+  color:#fff;
+}
+
+body {
+  letter-spacing: .0625em;
+  padding-bottom: 5em;
+  background:#161616
+}
+
+a {
+  color: rgb(167, 37, 59);
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.bg-primary{
+  background-color: white!important;
+}
+
+.text-primary {
+  color: #64a19d!important;
+}
+
+#get-started {
+  padding-top: 40px;
+  font-size: 130%;
+}
+
+#overlay .overlay {
+  position: relative;
+  top: 28em;
+  left: 90%;
+}
+
+#inputVideo {
+  position: absolute;
+  top: 12em;
+  left: 20%;
+  z-index: -1;
+}

@@ -1,34 +1,35 @@
 /*
- *  FaceSpace Main Server
+ *  Aurora Main Server
  */
 
 /** Require environment variable(s) */
 require('dotenv').config();
 
 /** Require middlewares */
+const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const express = require('express');
-const config = require('./config/config');
-const app = require('./config/express');
-const routes = require('./index.route');
+const path = require('path');
+const faceapi = require('face-api.js');
+const axios = require('axios');
+const Twitter = require('twitter');
 
 /** Instantiate server */
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 /** Use middlewares */
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.use(express.static('./carfew-react/public'));
+app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser());
-app.use(routes);
 
 /** Custom auth-checking middleware */
 const checkAuth = (req, res, next) => {
@@ -55,6 +56,8 @@ db.once('open', () => {
 });
 
 /** Require controller(s) */
+require('./controllers/index')(app);
+require('./controllers/auth')(app);
 
 /** Port listener */
 app.listen(PORT, () => {

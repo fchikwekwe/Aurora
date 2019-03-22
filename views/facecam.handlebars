@@ -1,0 +1,52 @@
+<!-- Materialize -->
+<!-- Face-API.js Scripts -->
+<script src="js/commons.js"></script>
+<script src="js/drawing.js"></script>
+<script src="js/faceDetectionControls.js"></script>
+<script src="js/face-api.js"></script>
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+<div class="canvas">
+  <canvas id="overlay"></canvas>
+</div>
+
+<div class="faceCam">
+  <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
+</div>
+
+
+<canvas id="selfie-canvas" style="display:none;"></canvas>
+<img src="" id="selfie-image" alt="user image">
+
+<!-- check boxes -->
+<div class="checkbox">
+  <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
+  <label for="hideLandmarksCheckbox">Hide Landmarks</label>
+</div>
+<!-- check boxes -->
+
+<div id="selfie-buttons">
+    <button type="button" id="takeSelfie" onclick="takeSelfie();">
+        Take Selfie
+    </button>
+    <a id="downloadSelfie" href="#" download="aurora_selfie.png">
+        <button>
+            Download Selfie
+        </button>
+    </a>
+    <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
+        Save to Profile
+    </button>
+    <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
+        Email Photo
+    </button> -->
+</div>
+
+
+<!-- Custom Script for Face-API -->
+<script src="js/faceCam.js"></script>
+<script src="js/takeSelfie.js"></script>

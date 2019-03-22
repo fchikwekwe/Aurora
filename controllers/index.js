@@ -19,6 +19,18 @@ module.exports = (app) => {
 
     // Camera route that renders central app
     app.get('/video', async (req, res) => {
+        const emailSubject = 'Here is your Aurora Selfie!',
+            emailBody = `
+        Hi there!
+
+        Here is the selfie that you asked for.
+
+        Check us out again soon at auroramirror.com
+
+        --Faith and Stephanie`,
+            attachment = 'aurora_selfie.png',
+            mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + '?attach=' + attachment;
+
         try {
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();
@@ -26,8 +38,9 @@ module.exports = (app) => {
             // console.log(faceapi.nets);
             await ssd.loadFromDisk(MODELS_URL);
             await tiny.loadFromDisk(MODELS_URL);
-
-            res.render('facecam', );
+            
+            console.log(mailTo);
+            res.render('facecam', { mailTo });
         } catch (err) {
             console.log(err);
         }

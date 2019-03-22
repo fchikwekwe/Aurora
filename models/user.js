@@ -37,9 +37,9 @@ const UserSchema = new Schema({
         minlength: [6, 'Your password must be a least six characters long.'],
         required: [true, 'Your password cannot be blank.'],
     },
-    photoUrls: {
-        type: [String],
-    }
+    photo1: {
+        type: String,
+    },
 });
 
 // Must use function here! ES6 => functions do not bind this!

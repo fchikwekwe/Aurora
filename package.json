@@ -1,7 +1,7 @@
 {
   "name": "facespace",
   "version": "1.0.0",
-  "description": "Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾",
+  "description": "Aurora: The Digital Mirror. Experience the modern way to get dolled up.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/fchikwekwe/FaceSpace/issues"
   },
-  "homepage": "https://github.com/fchikwekwe/FaceSpace#readme",
+  "homepage": "http://auroramirror.herokuapp.com",
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
@@ -38,8 +38,6 @@
     "jsonwebtoken": "^8.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.4.17",
-    "node-fetch": "^2.3.0",
-    "node-fetch-polyfill": "^2.0.6",
     "normalize.css": "^8.0.1",
     "path": "^0.12.7",
     "twitter": "^1.7.1"

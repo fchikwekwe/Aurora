@@ -9,10 +9,13 @@
 <script src="js/face-api.js"></script>
 
 <!-- STEPH this styling is optional -->
-<div style="position: relative" class="margin">
+<div>
   <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
-  <canvas id="overlay"/>
+  <canvas id="overlay"></canvas>
+
 </div>
+<canvas id="selfie-canvas" style="display:none;"></canvas>
+<img src="" id="selfie-image" alt="user image">
 
 <!-- check boxes -->
 <div class="row">
@@ -21,5 +24,13 @@
 </div>
 <!-- check boxes -->
 
+<div id="selfie-buttons">
+    <button type="button" id="takeSelfie" onclick="takeSelfie();">Take Selfie</button>
+    <a id="downloadSelfie" href="#" download="aurora_selfie.png">
+        <button>Download Selfie</button>
+    </a>
+</div>
+
 <!-- Custom Script for Face-API -->
 <script src="js/faceCam.js"></script>
+<script src="js/takeSelfie.js"></script>

@@ -70,7 +70,7 @@ module.exports = (app) => {
                     message: 'Password is not valid!'
                 });
             } else {
-                console.log(user, "successfully logged in!")
+                // console.log(user, "successfully logged in!")
             }
             const token = jwt.sign(
                 {

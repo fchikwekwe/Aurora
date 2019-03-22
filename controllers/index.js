@@ -1,5 +1,7 @@
 /** Root route and API routes go here */
 
+const User = require('../models/user');
+
 require('@tensorflow/tfjs-node');
 
 const faceapi = require('../public/js/face-api.js');
@@ -20,20 +22,28 @@ module.exports = (app) => {
 
     // Camera route that renders central app
     app.get('/video', async (req, res) => {
-        const currentUser = req.user;
-        const emailSubject = 'Here is your Aurora Selfie!',
-            emailBody = `
-        Hi there!
-
-        Here is the selfie that you asked for.
-
-        Check us out again soon at auroramirror.com
-
-        --Faith and Stephanie`,
-            attachment = 'aurora_selfie.png',
-            mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + '?attach=' + attachment;
-
         try {
+            // Check for current user
+            const currentUser = req.user;
+
+            if (currentUser) {
+                var user = await User.findById(currentUser._id);
+                console.log(user);
+            }
+
+            // Email content
+            const emailSubject = 'Here is your Aurora Selfie!',
+                emailBody = `
+            Hi there!
+
+            Here is the selfie that you asked for.
+
+            Check us out again soon at auroramirror.com
+
+            --Faith and Stephanie`,
+                attachment = 'aurora_selfie.png',
+                mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + '?attach=' + attachment;
+
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();
 
@@ -42,7 +52,7 @@ module.exports = (app) => {
             await tiny.loadFromDisk(MODELS_URL);
 
             // console.log(mailTo);
-            res.render('facecam', { mailTo, currentUser });
+            res.render('facecam', { mailTo, currentUser, user });
         } catch (err) {
             console.log(err);
         }

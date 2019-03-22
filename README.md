@@ -1,8 +1,7 @@
-# Face-Space
+# Aurora: The Digital Mirror
 
 ## About
-Face-space is an image recognition app that helps you apply make-up. 💄 💅🏾<br>
-For the live version, click [here](http://...).
+Aurora is the modern way to get dolled up! Star this repo for updates. Check out the [live version here](#live).
 
 ## Table of contents
 * [Getting Started](#getting-started)
@@ -33,7 +32,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Built With
 This project was built with the help of:
-* [Shape Detection API](https://wicg.github.io/shape-detection-api/) - This API provides face detector for live video and images. In addition, it can detect bar codes and words.
+* [Face-API.js](https://github.com/justadudewhohacks/face-api.js?files=1) - This API provides comprehensive face detection for live video. 
 
 ## Installing & Starting
 You will need [Node.js](https://nodejs.org) to install and run scripts.<br>

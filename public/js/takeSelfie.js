@@ -24,13 +24,16 @@ function takeSelfie(){
     // Set the dataURL as source of an image element, showing the captured photo.
     image.setAttribute('src', imageDataURL);
 
+    // Set the href attribute of the download button.
+    document.querySelector('#downloadSelfie').href = imageDataURL;
+
 }
 
 function downloadSelfie() {
-    var hidden_canvas = document.getElementById('selfie-canvas');
+    // var canvas = document.getElementById('selfie-canvas');
 
     // Get an image dataURL from the canvas.
-    var imageDataURL = hidden_canvas.toDataURL('image/png');
+    var imageDataURL = canvas.toDataURL('image/png');
 
     // Set the href attribute of the download button.
     document.querySelector('#downloadSelfie').href = imageDataURL;

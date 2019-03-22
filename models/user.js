@@ -46,6 +46,9 @@ const UserSchema = new Schema({
     photo3: {
         type: String,
     },
+    photo4: {
+        type: String,
+    },
 });
 
 // Must use function here! ES6 => functions do not bind this!

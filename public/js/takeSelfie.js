@@ -51,7 +51,7 @@ function saveSelfieToProfile() {
     axios.post('/users/image', img)
         .then((res) => {
             window.location.replace('/video');
-            return 
+            return
         })
         .catch((err) => {
             console.log(err);

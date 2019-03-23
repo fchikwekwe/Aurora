@@ -103,6 +103,7 @@ module.exports = (app) => {
                 }
                 user.findByIdAndUpdate(user._id)
                     .then(() => {
+                        console.log(user);
                         res.json(user);
                     })
             });

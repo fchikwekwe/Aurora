@@ -32,7 +32,9 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Built With
 This project was built with the help of:
-* [Face-API.js](https://github.com/justadudewhohacks/face-api.js?files=1) - This API provides comprehensive face detection for live video. 
+* [Face-API.js](https://github.com/justadudewhohacks/face-api.js?files=1) - This API provides comprehensive face detection for live video.
+* [AWS](...) For Cloud storage
+* [Twitter API w/ Twitter NPM Package](...) For user posting 
 
 ## Installing & Starting
 You will need [Node.js](https://nodejs.org) to install and run scripts.<br>

@@ -45,5 +45,16 @@ function saveSelfieToProfile() {
         .then(blob => {
             const file = new File([blob], 'aurora_selfie.png', blob)
             console.log(file)
+            return file;
         });
+
+    axios.post('/users/image', img)
+        .then((res) => {
+            window.location.replace('/video');
+            return
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
 }

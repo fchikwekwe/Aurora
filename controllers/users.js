@@ -8,7 +8,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const Upload = require('s3-uploader');
 
-
+const AWS = require('aws-sdk');
 
 module.exports = (app) => {
     // ROOT
@@ -42,76 +42,73 @@ module.exports = (app) => {
 
     // POST IMAGE To AWS
     app.post('/users/image', async (req, res) => {
-        console.log("here");
         const currentUser = req.user;
-        console.log("REQ BODY IMG", req.body.img);
 
-        if (currentUser) {
-            var user = User.findById(currentUser._id);
-            // console.log(user);
-        }
+        // Get Base64 URL
+        const base64 = req.body.img;
 
+        // Get user object
+        var user = await User.findById(currentUser._id);
+
+        // Check for first available photo slot
+        let userPhoto;
         if (!user.photo1) {
-            var userPath = 'users/photo1';
+            userPhoto = '-photo1';
         } else if (!user.photo2) {
-            var userPath = 'users/photo2';
+            userPhoto = '-photo2';
         } else if (!user.photo3) {
-            var userPath = 'users/photo3';
+            userPhoto = '-photo3';
         } else if (!user.photo4) {
-            var userPath = 'users/photo4';
+            userPhoto = '-photo4';
         }
 
-        const client = new Upload(process.env.S3_BUCKET, {
-            aws: {
-                path: userPath,
-                region: process.env.S3_REGION,
-                acl: 'public-read',
-                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-            },
-            cleanup: {
-                versions: true,
-                original: true,
-            },
-            versions: [{
-                maxWidth: 400,
-                aspect: '16:10',
-                suffix: '-square',
-            }],
+        // Uploading Base64 code lines 66-91 with help from
+        // https://medium.com/@mayneweb/upload-a-base64-image-data-from-nodejs-to-aws-s3-bucket-6c1bd945420f
+
+        // AWS credentials
+        AWS.config.update({
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            region: process.env.S3_REGION,
         });
 
-        client.upload(req.body.img, {}, function(err, versions, meta) {
-            if (err) { return res.status(400).send({ err }) };
+        // Create an s3 instnce
+        const s3 = new AWS.S3;
 
-            versions.forEach((image) => {
-                console.log("about to make photo");
-                const urlArray = image.url.split('-');
-                console.log(urlArray);
-                urlArray.pop();
-                const url = urlArray.join('-');
-                console.log(url);
+        // Regex to remove unnecessary parts of string
+        const base64Data = new Buffer(base64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
-                if (!user.photo1) {
-                    user.photo1 = url;
-                    console.log("User Photo", user.photo1);
-                } else if (!user.photo2) {
-                    user.photo2 = url;
-                } else if (!user.photo3) {
-                    user.photo3 = url;
-                } else if (!user.photo4) {
-                    user.photo4 = url;
-                } else {
-                    res.json("You don't have any more space for photos. Please delete one to save a new photo.")
-                }
-                user.findByIdAndUpdate(user._id)
-                    .then(() => {
-                        console.log("USER", user);
-                        res.json(user);
-                    })
-            });
-            console.log("USER", user);
-            res.send({ user });
+        // Regex to get file type
+        const type = base64.split(';')[0].split('/')[1];
+
+        const params = {
+            Bucket: process.env.S3_BUCKET,
+            Key: `${user.username}${userPhoto}.${type}`,
+            Body: base64Data,
+            ACL: 'public-read',
+            ContentEncoding: 'base64',
+            ContentType: `image/${type}`,
+        }
+
+        s3.upload(params, async (err, data) => {
+            // If there if a problem uploading the image, throw an error
+            if (err) { return res.status(400).send({ err }) }
+
+            // Check if the user has an empty slot for a photo
+            if (user.photo1 == undefined || user.photo1 == null) {
+                user.photo1 = data.Location;
+            } else if (user.photo2 == undefined || user.photo2 == null) {
+                user.photo2 = data.Location;
+            } else if (user.photo3 == undefined || user.photo3 == null) {
+                user.photo3 = data.Location;
+            } else if (user.photo4 == undefined || user.photo4 == null) {
+                user.photo4 = data.Location;
+            } else {
+                return res.json("You don't have any more space for photos. Please delete one to save a new photo.")
+            }
+            console.log("Image uploaded successfully!")
+            console.log(user);
         })
+        res.json(user);
     })
-
 };

@@ -27,7 +27,7 @@ body {
   min-height: 100%;
   width: 100%;
   margin: 0 auto;
-  margin-top: 67px
+  margin-top: 95px
 }
 
 .side-bar[data-position="right"]{
@@ -96,10 +96,11 @@ div.side-panel {
   left: -400px;
   position: absolute;
   min-width: 400px;
-  min-height: 90%;
+  min-height: 80%;
+  height: auto !important;
+  margin-bottom: -4em;
   background-color: #222;
   display: inline-block;
-  /* overflow: hidden; */
 }
 
 div.side-panel.open{

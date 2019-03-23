@@ -48,13 +48,16 @@ function saveSelfieToProfile() {
             return file;
         });
 
-    axios.post('/users/image', img)
+    const imagePath = img.src;
+    console.log(imagePath);
+
+    axios.post('/users/image', { img: imagePath.toString() })
         .then((res) => {
             window.location.replace('/video');
-            return
+            return res
         })
         .catch((err) => {
-            console.log(err);
+            console.log("ERROR", err);
         })
 
 }

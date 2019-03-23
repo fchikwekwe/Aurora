@@ -42,11 +42,13 @@ module.exports = (app) => {
 
     // POST IMAGE To AWS
     app.post('/users/image', async (req, res) => {
+        console.log("here");
         const currentUser = req.user;
+        console.log("REQ BODY IMG", req.body.img);
 
         if (currentUser) {
             var user = User.findById(currentUser._id);
-            console.log(user);
+            // console.log(user);
         }
 
         if (!user.photo1) {
@@ -78,7 +80,7 @@ module.exports = (app) => {
             }],
         });
 
-        client.upload(req.src, {}, function(err, versions, meta) {
+        client.upload(req.body.img, {}, function(err, versions, meta) {
             if (err) { return res.status(400).send({ err }) };
 
             versions.forEach((image) => {
@@ -103,10 +105,11 @@ module.exports = (app) => {
                 }
                 user.findByIdAndUpdate(user._id)
                     .then(() => {
+                        console.log("USER", user);
                         res.json(user);
                     })
             });
-            console.log(user);
+            console.log("USER", user);
             res.send({ user });
         })
     })

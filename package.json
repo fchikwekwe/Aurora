@@ -20,7 +20,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
-    "dotenv": "^6.2.0",
     "eslint": "^5.15.2",
     "mocha": "^6.0.2"
   },
@@ -32,6 +31,7 @@
     "body-parser": "^1.18.3",
     "canvas": "^2.4.1",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "face-api.js": "^0.18.0",

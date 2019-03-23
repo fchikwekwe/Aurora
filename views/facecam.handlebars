@@ -1,4 +1,3 @@
-<!-- Materialize -->
 <!-- Face-API.js Scripts -->
 <script src="js/commons.js"></script>
 <script src="js/drawing.js"></script>
@@ -6,11 +5,15 @@
 <script src="js/face-api.js"></script>
 <link rel="stylesheet" href="css/style.css">
 
+<!-- Materialize -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+<link rel="stylesheet" href="css/facecam.css">
+<link href="extras/fontawesome-free/css/all.css" rel="stylesheet">
+<link href="extras/fontawesome-free/css/fontawesome.css" rel="stylesheet">
 
-<div class="canvas" style="margin-top:12em; margin-left: 15em;">
+{{!-- <div class="canvas" style="margin-top:12em; margin-left: 15em;">
   <canvas id="overlay"></canvas>
 </div>
 
@@ -26,10 +29,10 @@
 <div class="checkbox">
   <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
   <label for="hideLandmarksCheckbox">Hide Landmarks</label>
-</div>
+</div> --}}
 <!-- check boxes -->
 
-<div id="selfie-buttons">
+{{!-- <div id="selfie-buttons">
     <button type="button" id="takeSelfie" onclick="takeSelfie();">
         Take Selfie
     </button>
@@ -44,7 +47,48 @@
     <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
         Email Photo
     </button> -->
+ </div> end selfie-buttons --}}
+
+{{!-- side panel dashboard --}}
+<div class="side-panel" id="side-panel">
+  <div id="sidepanel-heading" class="heading">
+    <span id="content-heading">USER PROFILE</span>
+  </div>
+<!--   <iframe id="content-frame" style="height: 90%; border:none; display: block; width: 400px; position: absolute;" src="https://apple.com"></iframe> -->
+  <div data-position="left" class="side-bar">
+    <div class="item top" id="show_hide"><i class="fa fa-angle-double-right"></i></div>
+    {{!-- user settings --}}
+    <div class="item" ><i class="fa fa-user"></i></div>
+
+    {{!-- separator --}}
+    <div class="item nothing" ></div>
+
+    {{!-- image options --}}
+    <div class="item"><i class="far fa-images"></i></div>
+    <div class="item"><i class="fas fa-lightbulb"></i></div>
+    <div class="item" ><i class="fas fa-search-plus"></i></div>
+
+    {{!-- separator --}}
+     <div class="item nothing" ></div>
+
+
+
+    {{!-- snap-share-social --}}
+    <div class="item" ><i class="fas fa-at"></i></div>
+    <div class="item"><i class="fas fa-cloud-download-alt"></i></div>
+    <div class="item"><i class="fab fa-facebook-square"></i></div>
+    <div class="item"><i class="fab fa-instagram"></i></div>
+    <div class="item"><i class="fab fa-snapchat-ghost"></i></div>
+    <div class="item"><i class="fab fa-twitter"></i></div>
+  </div>
+
+
 </div>
+
+
+
+
+
 
 
 <!-- Custom Script for Face-API -->

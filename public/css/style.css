@@ -295,30 +295,3 @@ a:hover {
   padding-top: 40px;
   font-size: 130%;
 }
-
-/* #overlay .overlay {
-  position: relative;
-  top: 28em;
-  left: 90%;
-} */
-
-#inputVideo {
-  position: absolute;
-  top: 12em;
-  left: 20%;
-  z-index: -1;
-}
-
-#selfie-image {
-  width: 256px;
-  height: 192px;
-  margin-left: 60em;
-}
-
-#selfie-buttons {
-  margin-left: 21em;
-}
-
-.checkbox {
-  margin-left: 25em;
-}

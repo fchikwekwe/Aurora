@@ -41,8 +41,6 @@
   margin: 0;
   padding-bottom: 0;
   color: white  ;
-  background-color: rgb(167, 37, 59)!important;
-  /* border: 1px solid black; */
 }
 
 #mainNav .navbar-toggler:focus{

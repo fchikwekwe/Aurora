@@ -8,10 +8,10 @@ const Photo = require('../models/photo');
 const multer = require('multer');
 const AWS = require('aws-sdk');
 
-const crypto = require('crypto');
+const request = require('request');
+const OAuth   = require('oauth-1.0a');
+const crypto  = require('crypto');
 
-const envNonce = process.env.NONCE.toString();
-const nonce = crypto.createHmac('sha256', envNonce).update('fTYvg7C').digest('hex');
 // Twitter package
 const Twitter = require('twitter');
 // Define Twitter credentials
@@ -21,9 +21,6 @@ const client = new Twitter({
     access_token_key: process.env.ACCESS_TOKEN_KEY,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
     oauth_callback: process.env.OAUTH_CALLBACK,
-    // oauth_nonce: nonce,
-    oauth_signature_method: "HMAC-SHA1",
-    oauth_timestamp: new Date()
 })
 
 
@@ -33,26 +30,31 @@ module.exports = (app) => {
         const currentUser = req.user;
 
         if (currentUser) {
-            var user = User.findById(currentUser._id);
-            console.log(user);
+            var user = await User.findById(currentUser._id);
+            // console.log(user);
+            return res.render('edit', { currentUser, user });
         }
+        // return res.render('edit', { currentUser, user });
+        res.json('You need to be logged in to do that!')
 
-        res.render('edit', { currentUser, user });
     });
 
     // UPDATE USER PROFILE
     app.put('/users/update', (req, res) => {
         const currentUser = req.user;
+        console.log("REQ BODY", req.body);
+        console.log("ID", req.params.id);
+
         if (currentUser) {
-            User.findByIdAndUpdate(req.params.id)
-                .then(() => {
+            User.findByIdAndUpdate(currentUser._id, req.body)
+                .then((user) => {
                     res.redirect('/faceCam')
                 })
                 .catch((err) => {
                     console.log(err.message);
                 })
         } else {
-            res.json('NOOO!')
+            res.json('You need to be logged in to do that!');
         }
 
     })
@@ -192,12 +194,42 @@ module.exports = (app) => {
     })
 
     app.post('/users/loginTwitter', (req, res) => {
-        // console.log(envNonce, nonce, client.oauth_nonce);
+        const currentUser = req.user;
+        const tweet = 'Test tweet from my new app.';
+
         if (currentUser == undefined) {
             res.redirect('/login-signup');
         } else {
-            client.post('/oauth/request_token')
-        }
+            const oauth = OAuth({
+                consumer: {
+                    key: process.env.CONSUMER_KEY,
+                    secret: process.env.CONSUMER_SECRET,
+                },
+                signature_method: 'HMAC-SHA1',
+                hash_function(base_string, key) {
+                    return crypto.createHmac('sha1', key).update(base_string).digest('key')
+                }
+            });
 
+            const request_data = {
+                url: 'https://api.twitter.com/oauth/request_token',
+                method: 'POST',
+                data: { status: tweet }
+            }
+
+            const token = {
+                key: process.env.CONSUMER_KEY,
+                secret: process.env.CONSUMER_SECRET,
+            }
+
+            request({
+                url: request_data.url,
+                method: request_data.method,
+                form: oauth.authorize(request_data, token)
+            }, (error, response, body) => {
+                // const type = base64.split(';')[0].split('/')[1];
+                console.log(response.split('oauth_token=')[0])
+            })
+        }
     })
 };

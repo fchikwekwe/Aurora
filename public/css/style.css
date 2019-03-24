@@ -1,8 +1,41 @@
+.profilePhotos {
+    /* Height needs to be 75% of width for proper proportions */
+    width: 80%;
+    height: 60%;
+    padding-top: 20px;
+}
+
+.photoRows {
+    width: 225px;
+}
+
+.photoRows p {
+    font-size: 80%;
+    overflow-wrap: break-word;
+}
+
+.update {
+    background-color: rgb(100, 161, 157);
+}
+
+.update:hover {
+    background-color: rgb(134, 183, 180);
+}
+
+.side-panel-signup  p {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.button-block {
+    width: 90%;
+}
+
 #mainNav {
   min-height: 56px;
   background-color: transparent;
 }
-  
+
 #mainNav .navbar-toggler {
   font-size: 80%;
   margin: 0;
@@ -65,7 +98,7 @@
 #mainNav .nav-link:active{
     color: #fff;
 }
-  
+
 #mainNav.navbar-shrink {
   background-color: #fff;
 }
@@ -117,12 +150,12 @@
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
@@ -143,7 +176,7 @@
   color: rgba(167, 37, 59, 0.9);
   text-shadow: 2px 2px 5px black;
 }
-  
+
 .masthead h3 {
   max-width: 20rem;
   font-size: 1rem;
@@ -224,7 +257,7 @@
   padding:5rem 0 0
 }
 
-.contact-section .card{ 
+.contact-section .card{
   border:0;
   border-bottom:.25rem solid rgb(186,34,85);
   box-shadow: 5px 10px 18px black;

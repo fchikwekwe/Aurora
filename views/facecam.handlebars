@@ -4,6 +4,7 @@
 <script src="js/faceDetectionControls.js"></script>
 <script src="js/face-api.js"></script>
 <link rel="stylesheet" href="css/style.css">
+<script src="js/takeSelfie.js"></script>
 
 <!-- Materialize -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
@@ -13,13 +14,66 @@
 <link href="extras/fontawesome-free/css/all.css" rel="stylesheet">
 <link href="extras/fontawesome-free/css/fontawesome.css" rel="stylesheet">
 
- 
+
 {{!-- side panel dashboard --}}
 <div class="side-panel" id="side-panel">
 
   <div id="sidepanel-heading" class="heading">
-    <span id="content-heading">USER PROFILE</span>
+    <span id="content-heading">USER PHOTOS</span>
   </div>
+
+    {{! -- This is the default for side panel --}}
+    {{#if currentUser}}
+        <div class="row photoRows">
+            {{#if user.photo1}}
+                <img src="{{user.photo1.urlString}}" alt="User's saved photo1" class="profilePhotos">
+            {{/if}}
+            {{#if user.photo2}}
+                <img src="{{user.photo2.urlString}}" alt="User's saved photo2" class="profilePhotos">
+            {{/if}}
+        </div>
+        <div class="row photoRows">
+            {{#if user.photo3}}
+                <img src="{{user.photo3.urlString}}" alt="User's saved photo3" class="profilePhotos">
+            {{/if}}
+            {{#if user.photo4}}
+                <img src="{{user.photo4.urlString}}" alt="User's saved photo4" class="profilePhotos">
+            {{/if}}
+        </div>
+    {{else}}
+    <a class="side-panel-signup" href="/login-sign-up">
+        <p>Click login/signup to see</p>
+        <p>your saved photos here!</p>
+    </a>
+    {{/if}}
+
+    {{! -- This goes under the user button on side panel --}}
+    <!--   <div id="sidepanel-heading" class="heading">
+        <span id="content-heading">USER PHOTOS</span>
+      </div>
+    {{#if currentUser}}
+    <div class="row photoRows">
+        <h4>Welcome {{user.username}},</h4>
+
+        <p>Profile Information:</p>
+        <p>{{user.firstname}} {{user.lastname}}</p>
+        <p>{{user.email}}</p>
+    </div>
+        <div class="row photoRows">
+            <button type="submit" class="button button-block update"/>Update Your Profile</button>
+
+        </div>
+        <div class="row photoRows">
+            <button type="submit" class="button button-block btn-danger"/>Delete Your Profile</button>
+        </div>
+        </div>
+    {{else}}
+        <a class="side-panel-signup" href="/login-signup">
+          <p>Login or signup to see your</p>
+          <p>profile information here</p>
+        </a>
+    {{/if}} -->
+
 
   {{!-- This is where you put the user dashboard items --}}
 
@@ -53,8 +107,10 @@
 
 <div class="faceContainer">
 
+
   <div class="canvas" style=" margin-left: 15em;">
     <canvas id="overlay"></canvas>
+    <input type="checkbox" id="hideLandmarks">
   </div>
 
   <div class="faceCam">
@@ -62,37 +118,39 @@
   </div>
 
   <canvas id="selfie-canvas" style="display:none;"></canvas>
-  <img src="" id="selfie-image" alt="user image">
+
 
   <!-- check boxes -->
-  <div class="checkbox">
+  <!-- <div class="checkbox">
     <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
     <label for="hideLandmarksCheckbox">Hide Landmarks</label>
-  </div>
+  </div> -->
   <!-- check boxes -->
 
-  <div id="selfie-buttons">
+  <!-- <div id="selfie-buttons">
       <button type="button" id="takeSelfie" onclick="takeSelfie();">
           Take Selfie
       </button>
       <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
           Save to Profile
-      </button>
+      </button> -->
       <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
           Email Photo
-      </button> -->
-  </div> {{!--end selfie-buttons --}}
+      </button>
+  </div> --> {{!--end selfie-buttons --}}
 
 </div>
 
+<img src="" id="selfie-image" alt="user image" >
+
 <div id="picture-buttons">
-  <div class="item" title="Take a Selfie">
+  <div class="item" title="Take a Selfie" onclick="takeSelfie();">
     <i class="fas fa-camera"></i>
   </div>
-  <div class="item" title="Show/Hide Bounding Box">
+  <div class="item" title="Show/Hide Bounding Box" onclick="onChangeHideLandmarks(event)">
     <i class="far fa-square"></i>
   </div>
-  <div class="item" "Save to Profile">
+  <div class="item" "Save to Profile" onclick="saveSelfieToProfile();">
     <i class="fas fa-folder"></i>
   </div>
   <div class="item" title="Zoom">
@@ -115,6 +173,3 @@
 
 <!-- Custom Script for Face-API -->
 <script src="js/faceCam.js"></script>
-<script src="js/takeSelfie.js"></script>
-
-      

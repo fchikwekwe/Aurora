@@ -4,11 +4,11 @@ const User = require('../models/user');
 
 // UPLOADING TO AWS S3
 const multer = require('multer');
-
-const upload = multer({ dest: 'uploads/' });
-const Upload = require('s3-uploader');
-
 const AWS = require('aws-sdk');
+
+const Twitter = require('twitter');
+const config = require('./config.js');
+const T = new Twitter(config);
 
 module.exports = (app) => {
     // ROOT
@@ -111,4 +111,8 @@ module.exports = (app) => {
         })
         res.json(user);
     })
+
+    // app.post('/users/twitter', async(req, res) => {
+    //     T.post('/statuses/update')
+    // })
 };

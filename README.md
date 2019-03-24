@@ -26,15 +26,15 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Planning documents
 * [ERD w/ LucidChart](https://www.lucidchart.com/documents/edit/97a299c1-4228-445b-9895-d0371d1ef5b8?shared=true&)
-* [Wireframes](url)
+* [Wireframes](https://xd.adobe.com/spec/6f42bbe3-f0b4-4410-5bc3-8f3a6ee04b0c-1973/)
 * [User Interviews](https://docs.google.com/document/d/1bCqTNiHnvjjZIKC9UdtI-DHZo99CbpR7agNk5crk72Q/edit?usp=sharing)
 * [User Narratives](https://docs.google.com/document/d/1v1B4Gf8fTLAxLSwZtnuqddWkrnEPL-8z74Y-H6S7Iqk/edit?usp=sharing)
 
 ## Built With
 This project was built with the help of:
-* [Face-API.js](https://github.com/justadudewhohacks/face-api.js?files=1) - This API provides comprehensive face detection for live video.
-* [AWS](...) For Cloud storage
-* [Twitter API w/ Twitter NPM Package](...) For user posting 
+* [Face-API.js](https://github.com/justadudewhohacks/face-api.js?files=1) - This API provides comprehensive face detection of up to 68 landmarks. We used the real-time tracking features for live video.
+* [AWS S3 for Photo Storage](http://aws.amazon.com) For Cloud storage
+* [Twitter API w/ npm Twitter](...) For user posting
 
 ## Installing & Starting
 You will need [Node.js](https://nodejs.org) to install and run scripts.<br>

@@ -16,7 +16,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const faceapi = require('face-api.js');
 const axios = require('axios');
-const Twitter = require('twitter');
+
 
 /** Instantiate server */
 const app = express();

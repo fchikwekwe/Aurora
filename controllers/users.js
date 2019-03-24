@@ -12,7 +12,7 @@ const T = new Twitter(config);
 
 module.exports = (app) => {
     // ROOT
-    app.get('/users/edit', async (req, res) => {
+    app.get('/users-edit', async (req, res) => {
         const currentUser = req.user;
 
         if (currentUser) {

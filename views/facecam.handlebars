@@ -28,23 +28,24 @@
     {{!-- user settings --}}
     <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
 
-    {{!-- image options --}}
-    {{!-- <div class="item"><i class="fas fa-folder"></i></div> --}}
-    {{!-- <div class="item" title="Add lighting"><i class="fas fa-lightbulb"></i></div>
-    <div class="item" title="Zoom" ><i class="fas fa-search-plus"></i></div> --}}
-
     {{!-- separator --}}
      <div class="item nothing" ></div>
 
 
 
     {{!-- snap-share-social --}}
-    {{!-- <div class="item" title="Email" ><i class="fas fa-at"></i></div>
-    <div class="item" title="Download Selfie"><i class="fas fa-cloud-download-alt"></i></div> --}}
-    <div class="item" title="Send to Twitter"><i class="fab fa-twitter"></i></div>
-    <div class="item" title="Send to Facebook"><i class="fab fa-facebook-square"></i></div>
-    <div class="item" title="Send to Instagram"><i class="fab fa-instagram"></i></div>
-    <div class="item" "Send to Snapchat"><i class="fab fa-snapchat-ghost"></i></div>
+    <div class="item" title="Send to Twitter" id="social">
+      <i class="fab fa-twitter"></i>
+    </div>
+    <div class="item" title="Send to Facebook" id="social">
+      <i class="fab fa-facebook-square"></i>
+    </div>
+    <div class="item" title="Send to Instagram" id="social">
+      <i class="fab fa-instagram"></i>
+    </div>
+    <div class="item" "Send to Snapchat" id="social">
+      <i class="fab fa-snapchat-ghost"></i>
+    </div>
   </div>
 
 
@@ -89,7 +90,31 @@
 
 </div>
 
+<div id="picture-buttons">
+  <div class="item" title="Take a Selfie">
+    <i class="fas fa-camera"></i>
+  </div>
+  <div class="item" title="Show/Hide Bounding Box">
+    <i class="far fa-square"></i>
+  </div>
+  <div class="item" "Save to Profile">
+    <i class="fas fa-folder"></i>
+  </div>
+  <div class="item" title="Zoom">
+    <i class="fas fa-search-plus"></i>
+  </div>
+  <div class="item" title="Add Lighting">
+    <i class="fas fa-lightbulb"></i>
+  </div>
+  <div class="item nothing" ></div>
+    <div class="item">
+    <i class="fas fa-at"></i>
+  </div>
+    <div class="item" title="Download Image">
+    <i class="fas fa-cloud-download-alt"></i>
+  </div>
 
+</div>
 
 <!-- Custom Script for Face-API -->
 <script src="js/faceCam.js"></script>

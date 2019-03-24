@@ -1,6 +1,8 @@
 /** User routes, profile and dashboard go here */
 
+// Import Models
 const User = require('../models/user');
+const Photo = require('../models/photo');
 
 // UPLOADING TO AWS S3
 const multer = require('multer');
@@ -99,8 +101,7 @@ module.exports = (app) => {
             s3.upload(params, async (err, data) => {
                 let body;
                 let photo;
-
-                // const currentUser = req.user;
+                
                 // If there if a problem uploading the image, throw an error
                 if (err) { return res.status(400).send({ err }) }
 
@@ -112,8 +113,8 @@ module.exports = (app) => {
                         urlString: data.Location,
                         base64String: base64Data,
                     }
-                    photo = await User.create(body);
-                    user.photo1 = photo;
+                    photo = await Photo.create(body);
+                    await User.findByIdAndUpdate(user._id, { photo1: photo })
                 } else if (user.photo2 == undefined || user.photo2 == null) {
                     body = {
                         name: 'photo2',
@@ -121,8 +122,8 @@ module.exports = (app) => {
                         urlString: data.Location,
                         base64String: base64Data,
                     }
-                    photo = await User.create(body);
-                    user.photo2 = photo;
+                    photo = await Photo.create(body);
+                    await User.findByIdAndUpdate(user._id, { photo2: photo })
                 } else if (user.photo3 == undefined || user.photo3 == null) {
                     body = {
                         name: 'photo3',
@@ -130,8 +131,8 @@ module.exports = (app) => {
                         urlString: data.Location,
                         base64String: base64Data,
                     }
-                    photo = await User.create(body);
-                    user.photo3 = photo;
+                    photo = await Photo.create(body);
+                    await User.findByIdAndUpdate(user._id, { photo3: photo })
                 } else if (user.photo4 == undefined || user.photo4 == null) {
                     body = {
                         name: 'photo4',
@@ -139,8 +140,8 @@ module.exports = (app) => {
                         urlString: data.Location,
                         base64String: base64Data,
                     }
-                    photo = await User.create(body);
-                    user.photo4 = photo;
+                    photo = await Photo.create(body);
+                    await User.findByIdAndUpdate(user._id, { photo4: photo })
                 } else {
                     return res.json("You don't have any more space for photos. Please delete one to save a new photo.")
                 }

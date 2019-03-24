@@ -62,37 +62,22 @@
   </div>
 
   <canvas id="selfie-canvas" style="display:none;"></canvas>
-  <img src="" id="selfie-image" alt="user image">
 
-  <!-- check boxes -->
-  <div class="checkbox">
-    <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
-    <label for="hideLandmarksCheckbox">Hide Landmarks</label>
-  </div>
-  <!-- check boxes -->
+  <object data="default.jpg" type="image/jpg">
+    <img src="" id="selfie-image"/>
+  </object>
 
-  <div id="selfie-buttons">
-      <button type="button" id="takeSelfie" onclick="takeSelfie();">
-          Take Selfie
-      </button>
-      <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
-          Save to Profile
-      </button>
-      <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
-          Email Photo
-      </button> -->
-  </div> {{!--end selfie-buttons --}}
 
 </div>
 
 <div id="picture-buttons">
-  <div class="item" title="Take a Selfie">
+  <div class="item" title="Take a Selfie" id="takeSelfie" onclick="takeSelfie();">
     <i class="fas fa-camera"></i>
   </div>
   <div class="item" title="Show/Hide Bounding Box">
     <i class="far fa-square"></i>
   </div>
-  <div class="item" "Save to Profile">
+  <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
     <i class="fas fa-folder"></i>
   </div>
   <div class="item" title="Zoom">
@@ -109,6 +94,12 @@
       <a id="downloadSelfie" href="#" download="aurora_selfie.png">
         <i class="fas fa-cloud-download-alt"></i>
       </a>
+  </div>
+
+  <!-- check boxes -->
+  <div class="checkbox">
+    <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
+    <label for="hideLandmarksCheckbox">Hide Landmarks</label>
   </div>
 
 </div>

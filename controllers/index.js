@@ -21,7 +21,7 @@ module.exports = (app) => {
     });
 
     // Camera route that renders central app
-    app.get('/video', async (req, res) => {
+    app.get('/faceCam', async (req, res) => {
         try {
             // Check for current user
             const currentUser = req.user;

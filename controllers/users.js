@@ -7,7 +7,7 @@ const multer = require('multer');
 const AWS = require('aws-sdk');
 
 const Twitter = require('twitter');
-const config = require('./config.js');
+const config = require('../config.js');
 const T = new Twitter(config);
 
 module.exports = (app) => {
@@ -29,7 +29,7 @@ module.exports = (app) => {
         if (currentUser) {
             User.findByIdAndUpdate(req.params.id)
                 .then(() => {
-                    res.redirect('/video')
+                    res.redirect('/faceCam')
                 })
                 .catch((err) => {
                     console.log(err.message);
@@ -44,6 +44,7 @@ module.exports = (app) => {
     app.post('/users/image', async (req, res) => {
         const currentUser = req.user;
 
+
         // Get Base64 URL
         const base64 = req.body.img;
 
@@ -52,13 +53,13 @@ module.exports = (app) => {
 
         // Check for first available photo slot
         let userPhoto;
-        if (!user.photo1) {
+        if (user.photo1 == undefined || user.photo1 == null) {
             userPhoto = '-photo1';
-        } else if (!user.photo2) {
+        } else if (user.photo2 == undefined || user.photo2 == null) {
             userPhoto = '-photo2';
-        } else if (!user.photo3) {
+        } else if (user.photo3 == undefined || user.photo3 == null) {
             userPhoto = '-photo3';
-        } else if (!user.photo4) {
+        } else if (user.photo4 == undefined || user.photo4 == null) {
             userPhoto = '-photo4';
         }
 
@@ -91,18 +92,49 @@ module.exports = (app) => {
         }
 
         s3.upload(params, async (err, data) => {
+            let body;
+            let photo;
+
             // If there if a problem uploading the image, throw an error
             if (err) { return res.status(400).send({ err }) }
 
             // Check if the user has an empty slot for a photo
             if (user.photo1 == undefined || user.photo1 == null) {
-                user.photo1 = data.Location;
+                body = {
+                    name: 'photo1',
+                    user: user,
+                    urlString: data.Location,
+                    base64String: base64Data,
+                }
+                photo = await User.create(body);
+                user.photo1 = photo;
             } else if (user.photo2 == undefined || user.photo2 == null) {
-                user.photo2 = data.Location;
+                body = {
+                    name: 'photo2',
+                    user: user,
+                    urlString: data.Location,
+                    base64String: base64Data,
+                }
+                photo = await User.create(body);
+                user.photo2 = photo;
             } else if (user.photo3 == undefined || user.photo3 == null) {
-                user.photo3 = data.Location;
+                body = {
+                    name: 'photo3',
+                    user: user,
+                    urlString: data.Location,
+                    base64String: base64Data,
+                }
+                photo = await User.create(body);
+                user.photo3 = photo;
             } else if (user.photo4 == undefined || user.photo4 == null) {
-                user.photo4 = data.Location;
+                body = {
+                    name: 'photo4',
+                    user: user,
+                    urlString: data.Location,
+                    base64String: base64Data,
+                }
+                photo = await User.create(body);
+                user.photo4 = photo;
             } else {
                 return res.json("You don't have any more space for photos. Please delete one to save a new photo.")
             }

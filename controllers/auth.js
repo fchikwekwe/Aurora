@@ -27,7 +27,7 @@ module.exports = (app) => {
                 httpOnly: true
             });
             console.log("It worked!");
-            res.redirect('/video');
+            res.redirect('/faceCam');
         } catch (err) {
             const currentUser = req.user;
             const info = { ...req.body };

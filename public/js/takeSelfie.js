@@ -1,3 +1,13 @@
+window.onload = function showImage() {
+    var image = document.getElementById('selfie-image')
+    console.log(image.src)
+    if (image.src == "(unknown)") {
+        image.style.display = 'none';
+    } else {
+        image.style.display = 'block';
+    }
+}
+
 function takeSelfie(){
 
     var hidden_canvas = document.getElementById('selfie-canvas'),

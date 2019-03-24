@@ -27,8 +27,13 @@ module.exports = (app) => {
             const currentUser = req.user;
 
             if (currentUser) {
-                var user = await User.findById(currentUser._id);
+                var user = await User.findById(currentUser._id)
+                    .populate('photo1')
+                    .populate('photo2')
+                    .populate('photo3')
+                    .populate('photo4');
                 console.log(user);
+                // console.log("Facecam photo", user.photo1.name);
             }
 
             // Email content
@@ -52,7 +57,12 @@ module.exports = (app) => {
             await tiny.loadFromDisk(MODELS_URL);
 
             // console.log(mailTo);
-            res.render('facecam', { mailTo, currentUser, user });
+            res.render('facecam', {
+                mailTo,
+                currentUser,
+                user
+            });
+
         } catch (err) {
             console.log(err);
         }

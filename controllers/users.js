@@ -10,8 +10,8 @@ const AWS = require('aws-sdk');
 
 const crypto = require('crypto');
 
-const envNonce = process.env.NONCE.toString();
-const nonce = crypto.createHmac('sha256', envNonce).update('fTYvg7C').digest('hex');
+// const envNonce = process.env.NONCE.toString();
+// const nonce = crypto.createHmac('sha256', envNonce).update('fTYvg7C').digest('hex');
 // Twitter package
 const Twitter = require('twitter');
 // Define Twitter credentials

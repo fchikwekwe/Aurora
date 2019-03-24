@@ -86,7 +86,7 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            return res.redirect('/video');
+            return res.redirect('/faceCam');
         });
     });
 

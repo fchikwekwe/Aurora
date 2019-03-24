@@ -53,7 +53,7 @@ function saveSelfieToProfile() {
 
     axios.post('/users/image', { img: imagePath.toString() })
         .then((res) => {
-            window.location.replace('/video');
+            window.location.replace('/faceCam');
             return res
         })
         .catch((err) => {

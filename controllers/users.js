@@ -8,9 +8,24 @@ const Photo = require('../models/photo');
 const multer = require('multer');
 const AWS = require('aws-sdk');
 
+const crypto = require('crypto');
+
+const envNonce = process.env.NONCE.toString();
+const nonce = crypto.createHmac('sha256', envNonce).update('fTYvg7C').digest('hex');
+// Twitter package
 const Twitter = require('twitter');
-const config = require('../config.js');
-const T = new Twitter(config);
+// Define Twitter credentials
+const client = new Twitter({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+    oauth_callback: process.env.OAUTH_CALLBACK,
+    // oauth_nonce: nonce,
+    oauth_signature_method: "HMAC-SHA1",
+    oauth_timestamp: new Date()
+})
+
 
 module.exports = (app) => {
     // ROOT
@@ -101,7 +116,7 @@ module.exports = (app) => {
             s3.upload(params, async (err, data) => {
                 let body;
                 let photo;
-                
+
                 // If there if a problem uploading the image, throw an error
                 if (err) { return res.status(400).send({ err }) }
 
@@ -153,7 +168,36 @@ module.exports = (app) => {
         res.json(user);
     })
 
-    // app.post('/users/twitter', async(req, res) => {
-    //     T.post('/statuses/update')
-    // })
+    app.post('/users/twitter', async(req, res) => {
+        const currentUser = req.user;
+
+        // get the base64Url of the photo from the client side via axios request
+        let base64String = req.body.base64string;
+        let tweet = req.body.tweet;
+
+        if (currentUser == undefined) {
+            res.redirect('/login-signup');
+        } else {
+            client.post('/media/upload', base64String, (err, media, res) => {
+                if (err) { return res.status(400).send({ err }) }
+                console.log(media);
+                client.post('/statuses/update', tweet, (err, tweet, res) => {
+                    if (err) { return res.status(400).send({ err }) }
+                    console.log(tweet)
+                })
+
+            })
+        }
+
+    })
+
+    app.post('/users/loginTwitter', (req, res) => {
+        // console.log(envNonce, nonce, client.oauth_nonce);
+        if (currentUser == undefined) {
+            res.redirect('/login-signup');
+        } else {
+            client.post('/oauth/request_token')
+        }
+
+    })
 };

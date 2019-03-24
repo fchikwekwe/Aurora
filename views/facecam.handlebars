@@ -26,15 +26,12 @@
   <div data-position="left" class="side-bar">
     <div class="item top" id="show_hide"><i class="fa fa-angle-double-right"></i></div>
     {{!-- user settings --}}
-    <div class="item" ><i class="fa fa-user"></i></div>
-
-    {{!-- separator --}}
-    <div class="item nothing" ></div>
+    <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
 
     {{!-- image options --}}
-    <div class="item"><i class="far fa-images"></i></div>
-    <div class="item"><i class="fas fa-lightbulb"></i></div>
-    <div class="item" ><i class="fas fa-search-plus"></i></div>
+    {{!-- <div class="item"><i class="fas fa-folder"></i></div> --}}
+    {{!-- <div class="item" title="Add lighting"><i class="fas fa-lightbulb"></i></div>
+    <div class="item" title="Zoom" ><i class="fas fa-search-plus"></i></div> --}}
 
     {{!-- separator --}}
      <div class="item nothing" ></div>
@@ -42,53 +39,55 @@
 
 
     {{!-- snap-share-social --}}
-    <div class="item" ><i class="fas fa-at"></i></div>
-    <div class="item"><i class="fas fa-cloud-download-alt"></i></div>
-    <div class="item"><i class="fab fa-facebook-square"></i></div>
-    <div class="item"><i class="fab fa-instagram"></i></div>
-    <div class="item"><i class="fab fa-snapchat-ghost"></i></div>
-    <div class="item"><i class="fab fa-twitter"></i></div>
+    {{!-- <div class="item" title="Email" ><i class="fas fa-at"></i></div>
+    <div class="item" title="Download Selfie"><i class="fas fa-cloud-download-alt"></i></div> --}}
+    <div class="item" title="Send to Twitter"><i class="fab fa-twitter"></i></div>
+    <div class="item" title="Send to Facebook"><i class="fab fa-facebook-square"></i></div>
+    <div class="item" title="Send to Instagram"><i class="fab fa-instagram"></i></div>
+    <div class="item" "Send to Snapchat"><i class="fab fa-snapchat-ghost"></i></div>
   </div>
 
 
 </div> {{!-- end-side-panel --}}
 
+<div class="faceContainer">
 
-<div class="canvas" style=" margin-left: 15em;">
-  <canvas id="overlay"></canvas>
+  <div class="canvas" style=" margin-left: 15em;">
+    <canvas id="overlay"></canvas>
+  </div>
+
+  <div class="faceCam">
+    <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
+  </div>
+
+  <canvas id="selfie-canvas" style="display:none;"></canvas>
+  <img src="" id="selfie-image" alt="user image">
+
+  <!-- check boxes -->
+  <div class="checkbox">
+    <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
+    <label for="hideLandmarksCheckbox">Hide Landmarks</label>
+  </div>
+  <!-- check boxes -->
+
+  <div id="selfie-buttons">
+      <button type="button" id="takeSelfie" onclick="takeSelfie();">
+          Take Selfie
+      </button>
+      <a id="downloadSelfie" href="#" download="aurora_selfie.png">
+          <button>
+              Download Selfie
+          </button>
+      </a>
+      <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
+          Save to Profile
+      </button>
+      <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
+          Email Photo
+      </button> -->
+  </div> {{!--end selfie-buttons --}}
+
 </div>
-
-<div class="faceCam">
-  <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
-</div>
-
-<canvas id="selfie-canvas" style="display:none;"></canvas>
-<img src="" id="selfie-image" alt="user image">
-
-<!-- check boxes -->
-<div class="checkbox">
-  <input type="checkbox" id="hideLandmarksCheckbox" onchange="onChangeHideLandmarks(event)" />
-  <label for="hideLandmarksCheckbox">Hide Landmarks</label>
-</div>
-<!-- check boxes -->
-
-<div id="selfie-buttons">
-    <button type="button" id="takeSelfie" onclick="takeSelfie();">
-        Take Selfie
-    </button>
-    <a id="downloadSelfie" href="#" download="aurora_selfie.png">
-        <button>
-            Download Selfie
-        </button>
-    </a>
-    <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
-        Save to Profile
-    </button>
-    <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
-        Email Photo
-    </button> -->
- </div> {{!--end selfie-buttons --}}
-
 
 
 

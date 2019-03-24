@@ -13,6 +13,7 @@
     width: 256px;
     height: 192px;
     margin-left: 60em;
+    margin-top: -400px;
   }
   
   #selfie-buttons {
@@ -24,10 +25,22 @@
   }
 
 body {
-  min-height: 100%;
+  /* min-height: 100%; */
   width: 100%;
   margin: 0 auto;
   margin-top: 95px
+}
+
+.side-bar[data-position="left"]{
+  position: absolute;
+  left: 300px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  min-height: 100%;
+  width: 64px;
+  background-color: #333;
 }
 
 .side-bar[data-position="right"]{
@@ -43,18 +56,6 @@ body {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   overflow: hidden;
-}
-
-.side-bar[data-position="left"]{
-  position: absolute;
-  left: 400px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  min-height: 100%;
-  width: 64px;
-  background-color: #333;
 }
 
 div.item {
@@ -93,9 +94,9 @@ div.item.nothing {
 
 div.side-panel {
   z-index: 999;
-  left: -400px;
+  left: -300px;
   position: absolute;
-  min-width: 400px;
+  min-width: 300px;
   min-height: 80%;
   height: auto !important;
   margin-bottom: -4em;
@@ -112,13 +113,13 @@ div.side-panel.open{
 div.side-panel.close{
   animation-name: sidebar-close;
   animation-duration: .25s;
-  left: -400px;
+  left: -300px;
 }
 
 /* Keyframes */
 @keyframes sidebar-open {
   0% {
-    left: -400px;
+    left: -300px;
   }
   
   100% {
@@ -132,6 +133,12 @@ div.side-panel.close{
   }
   
   100% {
-    left: -400px;
+    left: -300px;
   }
+}
+
+.faceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

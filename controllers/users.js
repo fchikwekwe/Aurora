@@ -12,6 +12,19 @@ const request = require('request');
 const OAuth   = require('oauth-1.0a');
 const crypto  = require('crypto');
 
+// Send Emails with NodeMailer
+const nodemailer = require('nodemailer');
+const mg = require('nodemailer-mailgun-transport');
+const auth = {
+    auth: {
+        api_key: process.env.MAILGUN_API_KEY,
+        domain: process.env.EMAIL_DOMAIN,
+    }
+}
+
+const nodemailerMailgun = nodemailer.createTransport(mg(auth));
+
+
 // Twitter package
 const Twitter = require('twitter');
 // Define Twitter credentials
@@ -57,6 +70,96 @@ module.exports = (app) => {
             res.json('You need to be logged in to do that!');
         }
 
+    })
+
+    // app.post('/users/email', (req, res) => {
+    //     const base64 = req.body.img;
+    //     // console.log(req.body.img)
+    //     const email = req.body.email;
+    //
+    //     // Regex to remove unnecessary parts of string
+    //     const base64Data = new Buffer(base64, 'base64');
+    //     console.log(base64Data)
+    //     // Regex to get file type
+    //     const type = base64.split(';')[0].split('/')[1];
+    //
+    //     nodemailerMailgun.sendMail({
+    //         from: 'no-reply@auroramirror.com',
+    //         to: 'faith.chikwekwe@students.makeschool.com',
+    //         subject: "Here's your Aurora Selfie!",
+    //         html: `<p>Here's the email</p>`,
+    //         attachments: {
+    //             filename: 'aurora_selfie.png',
+    //             content: base64Data
+    //         }
+    //     })
+    //         .then((info) => {
+    //             console.log('Response:' + info);
+    //             res.redirect('/faceCam');
+    //         })
+    //         .catch((err) => {
+    //             console.log('Error:' + err);
+    //             res.redirect('/faceCam');
+    //         })
+    //
+    // })
+
+    app.post('/users/email', async(req, res) => {
+        const base64 = req.body.img;
+        const email = req.body.email;
+
+        // AWS credentials
+        AWS.config.update({
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            region: process.env.S3_REGION,
+        });
+
+        // Create an s3 instnce
+        const s3 = new AWS.S3;
+
+        // Regex to remove unnecessary parts of string
+        const base64Data = new Buffer(base64.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+        // Regex to get file type
+        const type = base64.split(';')[0].split('/')[1];
+
+        const params = {
+            Bucket: process.env.S3_BUCKET,
+            Key: `${email}-aurora_selfie.${type}`,
+            Body: base64Data,
+            ACL: 'public-read',
+            ContentEncoding: 'base64',
+            ContentType: `image/${type}`,
+        }
+
+        s3.upload(params, async (err, data) => {
+            nodemailerMailgun.sendMail({
+                from: 'no-reply@auroramirror.com',
+                to: 'faith.chikwekwe@students.makeschool.com',
+                subject: "Here's your Aurora Selfie!",
+                html: `
+                <h1>Thanks for checking out Aurora!</h1>
+                <a href="https://auroramirror.herokuapp.com/">
+                Come back </a><p>to our website the next time you're doing your makeup!
+                </p>
+                <br>
+                <a href=` + data.Location + `>Click here for your selfie<a/>
+                `,
+                attachments: {
+                    filename: 'aurora_selfie.png',
+                    content: base64Data
+                }
+            })
+                .then((info) => {
+                    console.log('Response:' + info);
+                    res.redirect('/faceCam');
+                })
+                .catch((err) => {
+                    console.log('Error:' + err);
+                    res.redirect('/faceCam');
+                })
+        })
     })
 
     // POST IMAGE To AWS

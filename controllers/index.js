@@ -41,13 +41,15 @@ module.exports = (app) => {
                 emailBody = `
             Hi there!
 
-            Here is the selfie that you asked for.
+            Here is the selfie that you asked for.`,
+
+                emailBody2 = `
 
             Check us out again soon at auroramirror.com
 
             --Faith and Stephanie`,
-                attachment = 'aurora_selfie.png',
-                mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + '?attach=' + attachment;
+
+                mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + emailBody2;
 
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();

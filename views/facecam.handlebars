@@ -19,7 +19,11 @@
 <div class="side-panel" id="side-panel">
 
   <div id="sidepanel-heading" class="heading">
-    <span id="content-heading">{{{user.firstname}}}'s profile</span>
+     {{#if currentUser}}
+     <span id="content-heading">{{{user.firstname}}}'s photos</span>
+     {{else}}
+    <span id="content-heading">USER PHOTOS</span>
+    {{/if}}
   </div>
 
     {{! -- This is the default for side panel --}}
@@ -48,7 +52,7 @@
     {{/if}}
 
     {{! -- This goes under the user button on side panel --}}
-    <!--   <div id="sidepanel-heading" class="heading">
+      <!-- <div id="sidepanel-heading" class="heading">
         <span id="content-heading">USER PHOTOS</span>
       </div>
     {{#if currentUser}}
@@ -65,7 +69,6 @@
         </div>
         <div class="row photoRows">
             <button type="submit" class="button button-block btn-danger"/>Delete Your Profile</button>
-        </div>
         </div>
     {{else}}
         <a class="side-panel-signup" href="/login-signup">
@@ -150,8 +153,8 @@
   <div class="item" title="Take a Selfie" onclick="takeSelfie();">
     <i class="fas fa-camera"></i>
   </div>
-  <div class="item" title="Show/Hide Bounding Box" onclick="onChangeHideLandmarks(event)">
-    <i class="far fa-square"></i>
+  <div class="item" title="Show/Hide Landmarks" onclick="onChangeHideLandmarks(event)">
+    <i class="far fa-id-card-alt"></i>
   </div>
   <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
     <i class="fas fa-folder"></i>
@@ -164,7 +167,18 @@
   </div>
   <div class="item nothing" ></div>
     <div class="item">
-    <i class="fas fa-at" onclick="javascript: window.location.href='mailTo:{{{user.email}}}'"></i>
+    <i class="fas fa-at" id="emailContact" onclick="emailSelfie();"></i>
+    <div id="emailForm">
+        <form action="#">
+            <p>Where would you like us to send this photo?</p>
+            {{#if currentUser}}
+              <input id="userEmail" type="email" placeholder="Enter a valid email address" value={{user.email}}>
+            {{else}}
+              <input id="userEmail" type="email" placeholder="Enter a valid email address">
+            {{/if}}
+            <input id="formBtn" type="submit">
+        </form>
+    </div>
   </div>
     <div class="item" title="Download Image">
       <a id="downloadSelfie" download="aurora_selfie.png">

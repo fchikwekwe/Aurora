@@ -92,7 +92,7 @@
 
     {{!-- snap-share-social --}}
     <div class="item" title="Send to Twitter" id="social">
-      <i class="fab fa-twitter"></i>
+      <i class="fab fa-twitter" onclick="sendTweet();"></i>
     </div>
     <div class="item" title="Send to Facebook" id="social">
       <i class="fab fa-facebook-square"></i>
@@ -117,6 +117,18 @@
   </div>
 
   <div class="faceCam">
+      {{#if tweetSuccess}}
+        <p style="color:rgba(167, 37, 59, 0.7);">{{tweetSuccess}}</p>
+      {{/if}}
+      {{#if emailSuccess}}
+        <p style="color:rgba(167, 37, 59, 0.7);">{{emailSuccess}}</p>
+      {{/if}}
+      {{#if emailFailure}}
+        <p style="color:rgba(167, 37, 59, 0.7);">{{emailFailure}}</p>
+      {{/if}}
+      {{#if updateFailure}}
+        <p style="color:rgba(167, 37, 59, 0.7);">{{updateFailure}}</p>
+      {{/if}}
     <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></faceCam>
   </div>
 
@@ -142,34 +154,41 @@
       </button>
   </div> --> {{!--end selfie-buttons --}}
 
-
 </div>
 
-<object data="default.jpg" type="image/jpg">
-  <img src="" id="selfie-image"/>
-</object>
+
+<img src="img/default.png" id="selfie-image"/>
 
 <div id="picture-buttons">
+
   <div class="item" title="Take a Selfie" onclick="takeSelfie();">
     <i class="fas fa-camera"></i>
   </div>
+
   <div class="item" title="Show/Hide Landmarks" onclick="onChangeHideLandmarks(event)">
     <i class="far fa-id-card-alt"></i>
   </div>
+
   <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
     <i class="fas fa-folder"></i>
   </div>
+
   <div class="item" title="Zoom">
     <i class="fas fa-search-plus"></i>
   </div>
+
   <div class="item" title="Add Lighting">
     <i class="fas fa-lightbulb"></i>
   </div>
+
   <div class="item nothing" ></div>
-    <div class="item">
-    <i class="fas fa-at" id="emailContact" onclick="emailSelfie();"></i>
-    <div id="emailForm">
-        <form action="#">
+
+  <div class="item" onclick="emailSelfie();">
+    <i class="fas fa-at" id="emailContact"></i>
+  </div>
+
+  <div id="emailForm">
+        <!-- <form action="#">
             <p>Where would you like us to send this photo?</p>
             {{#if currentUser}}
               <input id="userEmail" type="email" placeholder="Enter a valid email address" value={{user.email}}>
@@ -177,15 +196,13 @@
               <input id="userEmail" type="email" placeholder="Enter a valid email address">
             {{/if}}
             <input id="formBtn" type="submit">
-        </form>
-    </div>
+        </form> -->
   </div>
-    <div class="item" title="Download Image">
+  <div class="item" title="Download Image">
       <a id="downloadSelfie" download="aurora_selfie.png">
         <i class="fas fa-cloud-download-alt"></i>
       </a>
   </div>
-
 </div>
 
 <!-- Custom Script for Face-API -->

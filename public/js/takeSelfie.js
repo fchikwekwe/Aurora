@@ -111,6 +111,7 @@ function sendMail(){ // after clicking send in contact form
 
 function sendTweet(){
     // const message
+    console.log("attempting to send tweet");
     axios.post('/users/twitter')
         .then((res) => {
             console.log(res);

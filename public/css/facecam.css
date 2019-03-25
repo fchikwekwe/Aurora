@@ -184,41 +184,4 @@ div.side-panel.close{
   height: 100px;
   text-align: right;
   font-size : 30px;
-<<<<<<< HEAD
 }
-/* .social {
-  width: 65px;
-  height: 45px;
-  background: linear-gradient(#F6FAFD, #EDF0F5, #E7F0F9, #DDE6EF, #CAD2DD);
-  display: inline-block;
-  margin-left: 0px;
-  margin-right: -8px;
-  border-left: 1px solid #B0B8C5;
-  box-shadow: 2px 2px 2px 1px #4C667F;
-  color: #426895;
-} */
-
-/* .left {
-  border-radius: 12% 0% 0% 12%;
-}
-
-.right {
-  border-radius: 0% 12% 12% 0%;
-} */
-
-.social:hover {
-  background: linear-gradient(#AAC8EA, #A4C1E1, #9EBBDD, #9AB8DC, #94B2D6, #86A7D0);
-  color: #FBFBFF;
-}
-
-/* i {
-  width: 55px;
-  height: 31px;
-  background: inherit;
-  padding-top: 14px;
-  font-size: 24px;
-  color: inherit;
-} */
-=======
-}
->>>>>>> 57fec65036f211fcf6e570acb79778f1c6a8f1c8

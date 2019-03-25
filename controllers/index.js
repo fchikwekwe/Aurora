@@ -37,19 +37,19 @@ module.exports = (app) => {
             }
 
             // Email content
-            const emailSubject = 'Here is your Aurora Selfie!',
-                emailBody = `
-            Hi there!
-
-            Here is the selfie that you asked for.`,
-
-                emailBody2 = `
-
-            Check us out again soon at auroramirror.com
-
-            --Faith and Stephanie`,
-
-                mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + emailBody2;
+            // const emailSubject = 'Here is your Aurora Selfie!',
+            //     emailBody = `
+            // Hi there!
+            //
+            // Here is the selfie that you asked for.`,
+            //
+            //     emailBody2 = `
+            //
+            // Check us out again soon at auroramirror.com
+            //
+            // --Faith and Stephanie`,
+            //
+            //     mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + emailBody2;
 
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();
@@ -60,7 +60,7 @@ module.exports = (app) => {
 
             // console.log(mailTo);
             res.render('facecam', {
-                mailTo,
+                // mailTo,
                 currentUser,
                 user
             });

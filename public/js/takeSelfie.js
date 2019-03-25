@@ -108,3 +108,14 @@ function sendMail(){ // after clicking send in contact form
             console.log("ERROR", err);
         })
 }
+
+function sendTweet(){
+    // const message
+    axios.post('/users/twitter')
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}

@@ -41,20 +41,23 @@ module.exports = (app) => {
     // ROOT
     app.get('/users-edit', async (req, res) => {
         const currentUser = req.user;
+        const editFailure = 'You need to be logged in to do that!'
 
         if (currentUser) {
             var user = await User.findById(currentUser._id);
             // console.log(user);
             return res.render('edit', { currentUser, user });
         }
-        // return res.render('edit', { currentUser, user });
-        res.json('You need to be logged in to do that!')
+        res.render('facecam', {
+            editFailure
+        })
 
     });
 
     // UPDATE USER PROFILE
     app.put('/users/update', (req, res) => {
         const currentUser = req.user;
+        const updateFailure = 'You need to be logged in to do that!'
         console.log("REQ BODY", req.body);
         console.log("ID", req.params.id);
 
@@ -67,46 +70,18 @@ module.exports = (app) => {
                     console.log(err.message);
                 })
         } else {
-            res.json('You need to be logged in to do that!');
+            res.render('facecam', {
+                updateFailure
+            })
         }
 
     })
 
-    // app.post('/users/email', (req, res) => {
-    //     const base64 = req.body.img;
-    //     // console.log(req.body.img)
-    //     const email = req.body.email;
-    //
-    //     // Regex to remove unnecessary parts of string
-    //     const base64Data = new Buffer(base64, 'base64');
-    //     console.log(base64Data)
-    //     // Regex to get file type
-    //     const type = base64.split(';')[0].split('/')[1];
-    //
-    //     nodemailerMailgun.sendMail({
-    //         from: 'no-reply@auroramirror.com',
-    //         to: 'faith.chikwekwe@students.makeschool.com',
-    //         subject: "Here's your Aurora Selfie!",
-    //         html: `<p>Here's the email</p>`,
-    //         attachments: {
-    //             filename: 'aurora_selfie.png',
-    //             content: base64Data
-    //         }
-    //     })
-    //         .then((info) => {
-    //             console.log('Response:' + info);
-    //             res.redirect('/faceCam');
-    //         })
-    //         .catch((err) => {
-    //             console.log('Error:' + err);
-    //             res.redirect('/faceCam');
-    //         })
-    //
-    // })
-
     app.post('/users/email', async(req, res) => {
         const base64 = req.body.img;
         const email = req.body.email;
+        const emailSuccess = "Your email was successfully sent!";
+        const emailFailure = "There was a problem send your email."
 
         // AWS credentials
         AWS.config.update({
@@ -153,11 +128,19 @@ module.exports = (app) => {
             })
                 .then((info) => {
                     console.log('Response:' + info);
-                    res.redirect('/faceCam');
+                    res.render('facecam', {
+                        currentUser,
+                        user,
+                        emailSuccess
+                    });
                 })
                 .catch((err) => {
                     console.log('Error:' + err);
-                    res.redirect('/faceCam');
+                    res.render('facecam', {
+                        currentUser,
+                        user,
+                        emailFailure
+                    });
                 })
         })
     })
@@ -165,6 +148,8 @@ module.exports = (app) => {
     // POST IMAGE To AWS
     app.post('/users/image', async (req, res) => {
         const currentUser = req.user;
+        const imageSuccess = "Your selfie was successfully saved!"
+        // const imageFailure = "There was a problem with saving your selfie."
 
         if (currentUser == undefined) {
 
@@ -265,8 +250,11 @@ module.exports = (app) => {
                 } else {
                     return res.json("You don't have any more space for photos. Please delete one to save a new photo.")
                 }
-                console.log("Image uploaded successfully!")
-                console.log(user);
+                return res.render('facecam', {
+                    currentUser,
+                    user,
+                    imageSuccess,
+                })
 
             })
         }
@@ -275,10 +263,17 @@ module.exports = (app) => {
 
     app.post('/users/twitter', async(req, res) => {
         const currentUser = req.user;
+        const tweetSuccess = "Your tweet was successfully sent!"
+
+        if (currentUser) {
+            var user = await User.findById(currentUser._id).populate('photo1')
+            console.log(user);
+            // console.log("Facecam photo", user.photo1.name);
+        }
 
         // get the base64Url of the photo from the client side via axios request
-        let base64String = req.body.base64string;
-        let tweet = req.body.tweet;
+        let base64String = user.photo1.base64String;
+        let tweet = 'Test tweet from my new app.';
 
         if (currentUser == undefined) {
             res.redirect('/login-signup');
@@ -288,7 +283,11 @@ module.exports = (app) => {
                 console.log(media);
                 client.post('/statuses/update', tweet, (err, tweet, res) => {
                     if (err) { return res.status(400).send({ err }) }
-                    console.log(tweet)
+                    return res.render('facecam', {
+                        currentUser,
+                        user,
+                        tweetSuccess,
+                    })
                 })
 
             })
@@ -331,7 +330,8 @@ module.exports = (app) => {
                 form: oauth.authorize(request_data, token)
             }, (error, response, body) => {
                 // const type = base64.split(';')[0].split('/')[1];
-                console.log(response.split('oauth_token=')[0])
+                console.log(response)
+                res.redirect(`https://api.twitter.com/oauth/authorize?oauth_token=${response}`);
             })
         }
     })

@@ -127,7 +127,7 @@ module.exports = (app) => {
                 }
             })
                 .then((info) => {
-                    console.log('Response:' + info);
+                    // console.log('Response:' + info);
                     res.render('facecam', {
                         currentUser,
                         user,
@@ -135,7 +135,7 @@ module.exports = (app) => {
                     });
                 })
                 .catch((err) => {
-                    console.log('Error:' + err);
+                    // console.log('Error:' + err);
                     res.render('facecam', {
                         currentUser,
                         user,
@@ -149,10 +149,12 @@ module.exports = (app) => {
     app.post('/users/image', async (req, res) => {
         const currentUser = req.user;
         const imageSuccess = "Your selfie was successfully saved!"
+
+        let rng = Math.floor((Math.random() * 999) + 100);
+        console.log(rng);
         // const imageFailure = "There was a problem with saving your selfie."
 
         if (currentUser == undefined) {
-
             // save photo to cookie and then redirect back to save photo within login/signup route
             console.log("OH!")
             return res.redirect('/login-signup');
@@ -196,7 +198,7 @@ module.exports = (app) => {
 
             const params = {
                 Bucket: process.env.S3_BUCKET,
-                Key: `${user.username}${userPhoto}.${type}`,
+                Key: `${user.username}${userPhoto}${rng}.${type}`,
                 Body: base64Data,
                 ACL: 'public-read',
                 ContentEncoding: 'base64',
@@ -250,12 +252,6 @@ module.exports = (app) => {
                 } else {
                     return res.json("You don't have any more space for photos. Please delete one to save a new photo.")
                 }
-                return res.render('facecam', {
-                    currentUser,
-                    user,
-                    imageSuccess,
-                })
-
             })
         }
         return res.json(user);
@@ -330,7 +326,7 @@ module.exports = (app) => {
                 form: oauth.authorize(request_data, token)
             }, (error, response, body) => {
                 // const type = base64.split(';')[0].split('/')[1];
-                console.log(response)
+                // console.log(response)
                 res.redirect(`https://api.twitter.com/oauth/authorize?oauth_token=${response}`);
             })
         }

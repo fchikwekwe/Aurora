@@ -49,7 +49,7 @@ function downloadSelfie() {
 
 function saveSelfieToProfile() {
     const img = document.getElementById('selfie-image');
-    
+
     fetch(img.src)
         .then(res => res.blob())
         .then(blob => {
@@ -63,8 +63,7 @@ function saveSelfieToProfile() {
 
     axios.post('/users/image', { img: imagePath.toString() })
         .then((res) => {
-            window.location.replace('/faceCam');
-            return res
+            // console.log(res);
         })
         .catch((err) => {
             console.log("ERROR", err);

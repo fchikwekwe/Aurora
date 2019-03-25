@@ -176,19 +176,6 @@ div.side-panel.close{
 
 /* side-button-container */
 
-/* #picture-buttons {
-  position: absolute;
-  margin: auto;
-  top: -400px;
-  left: 66%;
-  right: 0px;
-  bottom: 11px;
-  width: 450px;
-  height: 100px;
-  text-align: right;
-  font-size : 30px;
-} */
-
 #overlay {
   margin-left: 80px;
   /* margin-right: 200px; */
@@ -199,22 +186,11 @@ div.side-panel.close{
 
 #picture-buttons {
   position: absolute;
-  top: 29%;
+  top: 34%;
   right: 0;
   margin: 24px 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   background-color: rgba(0,0,0,0.1);
   box-shadow: 0 5px 14px 3px rgba(0,0,0,0.2);
-}
-/* 
-.side-button {
-  display: block;
-  position: relative;
-  height: 8px;
-  width: 8px;
-  background-color: #fff;
-  border-radius: 100%;
-  margin: 24px auto;
-  cursor: pointer;
 }

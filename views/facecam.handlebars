@@ -1,10 +1,12 @@
-<!-- Face-API.js Scripts -->
+<script src="js/face-api.js"></script>
+<!-- Custom Script for Face-API -->
+<script src="js/takeSelfie.js"></script>
+<script src="js/faceCam.js"></script>
+{{!-- Face-API.js Scripts --}}
 <script src="js/commons.js"></script>
 <script src="js/drawing.js"></script>
 <script src="js/faceDetectionControls.js"></script>
-<script src="js/face-api.js"></script>
 <link rel="stylesheet" href="css/style.css">
-<script src="js/takeSelfie.js"></script>
 
 <!-- Materialize -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
@@ -46,7 +48,7 @@
         </div>
     {{else}}
     <a class="side-panel-signup" href="/login-sign-up">
-        <p>Click login/signup to see</p>
+        <p>Login In/Sign Up to see</p>
         <p>your saved photos here!</p>
     </a>
     {{/if}}
@@ -86,7 +88,7 @@
     <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
 
     {{!-- separator --}}
-     <div class="item nothing" ></div>
+     {{!-- <div class="item nothing" ></div> --}}
 
 
 
@@ -110,8 +112,7 @@
 
 <div class="faceContainer">
 
-
-  <div class="canvas" style=" margin-left: 15em;">
+  <div class="canvas">
     <canvas id="overlay"></canvas>
     <input type="checkbox" id="hideLandmarks">
   </div>
@@ -132,7 +133,6 @@
     <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></faceCam>
   </div>
 
-  <canvas id="selfie-canvas" style="display:none;"></canvas>
 
 
    <!-- Bounding Box Checkbox -->
@@ -156,8 +156,11 @@
 
 </div>
 
-
-<img src="img/default.png" id="selfie-image"/>
+<div class="side-images">
+  <canvas id="selfie-canvas" style="display:none;"></canvas>
+  <img src="img/default.png" id="selfie-image"/>
+  <div id="myresult" class="img-zoom-result"></div>
+</div>
 
 <div id="picture-buttons">
 
@@ -181,8 +184,6 @@
     <i class="fas fa-lightbulb"></i>
   </div>
 
-  <div class="item nothing" ></div>
-
   <div class="item" onclick="emailSelfie();">
     <i class="fas fa-at" id="emailContact"></i>
   </div>
@@ -205,5 +206,7 @@
   </div>
 </div>
 
-<!-- Custom Script for Face-API -->
-<script src="js/faceCam.js"></script>
+<script>
+  imageZoom("selfie-image", "myresult");
+</script>
+

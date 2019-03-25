@@ -5,7 +5,7 @@
 #inputVideo {
     position: absolute;
     top: 12em;
-    left: 20%;
+    left: 25%;
     z-index: -1;
     box-shadow: 3px 4px rgba(255, 255, 255, 0.1);
   }
@@ -19,7 +19,7 @@
 
   #selfie-buttons {
     position: relative;
-    margin-left: 21em;
+    margin-left: 50%;
   }
 
   input[type=checkbox]:checked~#overlay {
@@ -177,9 +177,9 @@ div.side-panel.close{
   position: absolute;
   margin: auto;
   top: -400px;
-  left: 580px;
+  left: 66%;
   right: 0px;
-  bottom: 0px;
+  bottom: 11px;
   width: 450px;
   height: 100px;
   text-align: right;
@@ -187,7 +187,7 @@ div.side-panel.close{
 }
 
 #overlay {
-  margin-left: 20px;
-  margin-right: 550px;
+  margin-left: 80px;
+  margin-right: 200px;
   margin-top: 120px;
 }

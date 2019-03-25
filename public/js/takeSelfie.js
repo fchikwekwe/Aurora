@@ -1,3 +1,13 @@
+// window.onload = function showImage() {
+//     var image = document.getElementById('selfie-image')
+//     console.log(image.src)
+//     if (image.src == "(unknown)") {
+//         image.style.display = 'none';
+//     } else {
+//         image.style.display = 'block';
+//     }
+// }
+
 function takeSelfie(){
 
     var hidden_canvas = document.getElementById('selfie-canvas'),
@@ -48,13 +58,65 @@ function saveSelfieToProfile() {
             return file;
         });
 
-    axios.post('/users/image', img)
+    const imagePath = img.src;
+    console.log(imagePath);
+
+    axios.post('/users/image', { img: imagePath.toString() })
         .then((res) => {
-            window.location.replace('/video');
-            return
+            window.location.replace('/faceCam');
+            return res
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+
+}
+
+function emailSelfie(){
+    $(function() {
+        // contact form animations
+        $('#emailContact').click(function() {
+            $('#emailForm').fadeToggle();
+        })
+        $(document).mouseup(function (e) {
+            var container = $("#emailForm");
+
+            if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                container.fadeOut();
+            }
+        });
+    });
+}
+
+function sendMail(){ // after clicking send in contact form
+    const img = document.getElementById('selfie-image');
+    const email = documet
+    const imagePath = img.src;
+    console.log(imagePath);
+
+    axios.post('/users/email', {
+        img: imagePath.toString(),
+        email: 'faith.chikwekwe@students.makeschool.com'
+    })
+        .then((res) => {
+            window.location.replace('/faceCam');
+            return res.redirect('/faceCam');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+}
+
+function sendTweet(){
+    // const message
+    console.log("attempting to send tweet");
+    axios.post('/users/twitter')
+        .then((res) => {
+            console.log(res);
         })
         .catch((err) => {
             console.log(err);
         })
-
 }

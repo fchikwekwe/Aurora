@@ -21,28 +21,35 @@ module.exports = (app) => {
     });
 
     // Camera route that renders central app
-    app.get('/video', async (req, res) => {
+    app.get('/faceCam', async (req, res) => {
         try {
             // Check for current user
             const currentUser = req.user;
 
             if (currentUser) {
-                var user = await User.findById(currentUser._id);
+                var user = await User.findById(currentUser._id)
+                    .populate('photo1')
+                    .populate('photo2')
+                    .populate('photo3')
+                    .populate('photo4');
                 console.log(user);
+                // console.log("Facecam photo", user.photo1.name);
             }
 
             // Email content
-            const emailSubject = 'Here is your Aurora Selfie!',
-                emailBody = `
-            Hi there!
-
-            Here is the selfie that you asked for.
-
-            Check us out again soon at auroramirror.com
-
-            --Faith and Stephanie`,
-                attachment = 'aurora_selfie.png',
-                mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + '?attach=' + attachment;
+            // const emailSubject = 'Here is your Aurora Selfie!',
+            //     emailBody = `
+            // Hi there!
+            //
+            // Here is the selfie that you asked for.`,
+            //
+            //     emailBody2 = `
+            //
+            // Check us out again soon at auroramirror.com
+            //
+            // --Faith and Stephanie`,
+            //
+            //     mailTo = 'mailto:?subject=' + emailSubject + '&body=' + emailBody + emailBody2;
 
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();
@@ -52,7 +59,12 @@ module.exports = (app) => {
             await tiny.loadFromDisk(MODELS_URL);
 
             // console.log(mailTo);
-            res.render('facecam', { mailTo, currentUser, user });
+            res.render('facecam', {
+                // mailTo,
+                currentUser,
+                user
+            });
+
         } catch (err) {
             console.log(err);
         }

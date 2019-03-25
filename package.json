@@ -26,6 +26,7 @@
   "dependencies": {
     "@tensorflow/tfjs-core": "^1.0.2",
     "@tensorflow/tfjs-node": "^1.0.1",
+    "aws-sdk": "^2.427.0",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -39,7 +40,11 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.4.17",
     "multer": "^1.4.1",
+    "nodemailer": "^5.1.1",
+    "nodemailer-mailgun-transport": "^1.4.0",
+    "nodemon": "^1.18.10",
     "normalize.css": "^8.0.1",
+    "oauth-1.0a": "^2.2.5",
     "path": "^0.12.7",
     "s3-uploader": "^2.0.3",
     "twitter": "^1.7.1"

@@ -38,16 +38,20 @@ const UserSchema = new Schema({
         required: [true, 'Your password cannot be blank.'],
     },
     photo1: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Photo',
     },
     photo2: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Photo',
     },
     photo3: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Photo',
     },
     photo4: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Photo',
     },
 });
 

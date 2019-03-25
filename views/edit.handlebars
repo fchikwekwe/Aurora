@@ -1,39 +1,43 @@
 <link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/login-signup.css">
 
 <link rel="stylesheet" href="css/materialize.css">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/login-signup.css">
 
-<body>
-    <div class="form">
-        <form class="" action="/users/update" method="POST">
-            <div class="sign-up">
-                <div class="field-wrap">
-                    <label>
-                      First Name<span class="req">*</span>
-                    </label>
-                    <input type="text" name="firstname" id="firstname" required autocomplete="off" value={{user.firstname}}>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                      Last Name<span class="req">*</span>
-                    </label>
-                    <input type="text" name="lastname" id="lastname" required autocomplete="off" value={{user.lastname}}>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                      Username<span class="req">*</span>
-                    </label>
-                    <input type="text" name="username" id="username" required autocomplete="off" value={{user.username}}>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                      Email<span class="req">*</span>
-                    </label>
-                    <input type="text" name="email" id="email" required autocomplete="off" value={{user.email}}>
-                </div>
+{{!-- <body> --}}
+<div class="form">
+    <form class="" action="/users/update?_method=PUT" method="POST">
+        <div class="sign-up">
+            <h1>Edit Your Profile</h1>
+            <div class="field-wrap">
+                <label>
+                  First Name<span class="req">*</span>
+                </label>
+                <input type="text" name="firstname" id="firstname" required autocomplete="off" value={{user.firstname}}>
             </div>
-        </form>
-    </div>
-</body>
+            <div class="field-wrap">
+                <label>
+                  Last Name<span class="req">*</span>
+                </label>
+                <input type="text" name="lastname" id="lastname" required autocomplete="off" value={{user.lastname}}>
+            </div>
+            <div class="field-wrap">
+                <label>
+                  Username<span class="req">*</span>
+                </label>
+                <input type="text" name="username" id="username" required autocomplete="off" value={{user.username}}>
+            </div>
+            <div class="field-wrap">
+                <label>
+                  Email<span class="req">*</span>
+                </label>
+                <input type="text" name="email" id="email" required autocomplete="off" value={{user.email}}>
+            </div>
+        </div>
+        <button type="submit" class="button button-block"/>Update Profile</button>
+    </form>
+</div>
+{{!-- </body> --}}
+
+<script src="js/login-signup.js"></script>

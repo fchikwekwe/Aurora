@@ -155,7 +155,7 @@ module.exports = (app) => {
 
             // save photo to cookie and then redirect back to save photo within login/signup route
             console.log("OH!")
-            res.redirect('/login-signup');
+            return res.redirect('/login-signup');
         } else {
             // Get Base64 URL
             const base64 = req.body.img;
@@ -258,7 +258,7 @@ module.exports = (app) => {
 
             })
         }
-        res.json(user);
+        return res.json(user);
     })
 
     app.post('/users/twitter', async(req, res) => {

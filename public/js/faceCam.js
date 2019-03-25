@@ -13,8 +13,15 @@ function updateTimeStats(timeInMs) {
     $('#fps').val(`${faceapi.round(1000 / avgTimeInMs)}`)
 }
 
+// var hideFace = false
+$('body').on('click', '#face-toggle-button', function(e) {
+    $('#overlay').toggle();
+})
+
 async function onPlay() {
     const videoEl = $('#inputVideo').get(0)
+
+    // if (hideFace) return 
 
     if(videoEl.paused || videoEl.ended || !isFaceDetectionModelLoaded())
         return setTimeout(() => onPlay())
@@ -30,6 +37,7 @@ async function onPlay() {
 
     if (result) {
         drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes)
+        // console.log(drawLandmarks(videoEl, $('#overlay').get(0), [result], withBoxes))
     }
 
     setTimeout(() => onPlay())
@@ -75,5 +83,3 @@ let EventHandler = {
 window.onload = () => {
     document.getElementById('show_hide').onclick = EventHandler.ShowHideSideBar
 }
-
-// image zoom

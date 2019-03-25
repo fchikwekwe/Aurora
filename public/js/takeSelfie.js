@@ -63,8 +63,7 @@ function saveSelfieToProfile() {
 
     axios.post('/users/image', { img: imagePath.toString() })
         .then((res) => {
-            window.location.replace('/faceCam');
-            return res
+            // console.log(res);
         })
         .catch((err) => {
             console.log("ERROR", err);

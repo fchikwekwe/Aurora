@@ -6,13 +6,13 @@
 <script src="js/commons.js"></script>
 <script src="js/drawing.js"></script>
 <script src="js/faceDetectionControls.js"></script>
-<link rel="stylesheet" href="css/style.css">
 
 <!-- Materialize -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 <link rel="stylesheet" href="css/facecam.css">
+<link rel="stylesheet" href="css/style.css">
 <link href="extras/fontawesome-free/css/all.css" rel="stylesheet">
 <link href="extras/fontawesome-free/css/fontawesome.css" rel="stylesheet">
 
@@ -87,22 +87,19 @@
     {{!-- user settings --}}
     <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
 
-    {{!-- separator --}}
-     {{!-- <div class="item nothing" ></div> --}}
-
 
 
     {{!-- snap-share-social --}}
-    <div class="item" title="Send to Twitter" id="social">
+    <div class="item social" title="Send to Twitter" id="social">
       <i class="fab fa-twitter" onclick="sendTweet();"></i>
     </div>
-    <div class="item" title="Send to Facebook" id="social">
+    <div class="item social" title="Send to Facebook" id="social">
       <i class="fab fa-facebook-square"></i>
     </div>
-    <div class="item" title="Send to Instagram" id="social">
+    <div class="item social" title="Send to Instagram" id="social">
       <i class="fab fa-instagram"></i>
     </div>
-    <div class="item" "Send to Snapchat" id="social">
+    <div class="item social" title ="Send to Snapchat" id="social">
       <i class="fab fa-snapchat-ghost"></i>
     </div>
   </div>
@@ -111,8 +108,38 @@
 </div> {{!-- end-side-panel --}}
 <div class="faceContainer">
 
+  <div class="face-scan">
+    <canvas id="overlay" style="display:visible;" class=""></canvas>
+    <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
+
+    <style>
+      .faceContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .face-scan {
+        width: 640px;
+        height: 480px;
+        position: relative;
+      }
+
+      #overlay, #inputVideo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+      }
+
+      .hideme {
+        display: none;
+      }
+    </style>
+  </div>
+
   <div class="canvas">
-    <canvas id="overlay"></canvas>
     <input type="checkbox" id="hideLandmarks">
   </div>
 
@@ -129,7 +156,7 @@
       {{#if updateFailure}}
         <p style="color:rgba(167, 37, 59, 0.7);">{{updateFailure}}</p>
       {{/if}}
-    <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></faceCam>
+    
   </div>
 
 
@@ -163,18 +190,32 @@
 
 <div id="picture-buttons">
 
+  <div class="item" id="face-toggle-button" title="Show/Hide Landmarks" style="display:visible;">
+    <i class="far fa-eye-slash"></i>
+  </div>
   <div class="item" title="Take a Selfie" onclick="takeSelfie();">
     <i class="fas fa-camera"></i>
   </div>
 
-  <div class="item" title="Show/Hide Landmarks" onclick="onChangeHideLandmarks(event)">
-    <i class="far fa-id-card-alt"></i>
+  <div class="item" title="Download Image">
+      <a id="downloadSelfie" download="aurora_selfie.png">
+        <i class="fas fa-cloud-download-alt"></i>
+      </a>
   </div>
+  {{#if currentUser}}
+      <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
+      <i class="fas fa-folder"></i>
+    </div>
+  {{else}}
+    <div class="item"><a class="item" "Save to Profile" href="/login-signup">
+      <i class="fas fa-folder"></i> </a>
+    </div>
+  {{/if }}
 
-  <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
-    <i class="fas fa-folder"></i>
+  <div class="item" onclick="emailSelfie();">
+    <i class="fas fa-at" id="emailContact"></i>
   </div>
-
+  
   <div class="item" title="Zoom">
     <i class="fas fa-search-plus"></i>
   </div>
@@ -183,12 +224,10 @@
     <i class="fas fa-lightbulb"></i>
   </div>
 
-  <div class="item" onclick="emailSelfie();">
-    <i class="fas fa-at" id="emailContact"></i>
-  </div>
 
   <div id="emailForm">
-        <!-- <form action="#">
+    
+        {{!-- <form action="#">
             <p>Where would you like us to send this photo?</p>
             {{#if currentUser}}
               <input id="userEmail" type="email" placeholder="Enter a valid email address" value={{user.email}}>
@@ -196,14 +235,6 @@
               <input id="userEmail" type="email" placeholder="Enter a valid email address">
             {{/if}}
             <input id="formBtn" type="submit">
-        </form> -->
-  </div>
-  <div class="item" title="Download Image">
-      <a id="downloadSelfie" download="aurora_selfie.png">
-        <i class="fas fa-cloud-download-alt"></i>
-      </a>
+        </form> --}}
   </div>
 </div>
-
-
-

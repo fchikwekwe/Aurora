@@ -2441,12 +2441,18 @@
                 drawContour(ctx, landmarks.getLeftEye(), true);
                 drawContour(ctx, landmarks.getRightEye(), true);
                 drawContour(ctx, landmarks.getMouth(), true);
+                console.log(ctx);
+                // console.log(canvas);
                 return;
+
             }
+
             // else draw points
             var ptOffset = lineWidth / 2;
             ctx.fillStyle = color;
-            landmarks.positions.forEach(function (pt) { return ctx.fillRect(pt.x - ptOffset, pt.y - ptOffset, lineWidth, lineWidth); });
+            landmarks.positions.forEach(function (pt) { 
+                return ctx.fillRect(pt.x - ptOffset, pt.y - ptOffset, lineWidth, lineWidth); 
+            });
         });
     }
 

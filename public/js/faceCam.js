@@ -16,6 +16,7 @@ function updateTimeStats(timeInMs) {
 // var hideFace = false
 $('body').on('click', '#face-toggle-button', function(e) {
     $('#overlay').toggle();
+    document.getElementById('#overlay').style.display("none")
 })
 
 async function onPlay() {

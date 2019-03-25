@@ -75,5 +75,3 @@ let EventHandler = {
 window.onload = () => {
     document.getElementById('show_hide').onclick = EventHandler.ShowHideSideBar
 }
-
-// image zoom

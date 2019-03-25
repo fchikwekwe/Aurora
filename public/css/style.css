@@ -1,3 +1,7 @@
+* {
+  font-family: 'Varela Round'
+}
+
 .profilePhotos {
     /* Height needs to be 75% of width for proper proportions */
     width: 80%;
@@ -48,7 +52,7 @@
 }
 
 #mainNav .navbar-brand {
-  color: white;
+  color: rgb(186,34,85);
   font-weight: 700;
   padding: .9rem 0;
 }
@@ -84,7 +88,7 @@
 #mainNav .nav-link {
   -webkit-transition: none;
   transition: none;
-  padding: 2rem 1.5rem;
+  padding: 0rem 1.5rem;
   color:  white;
   text-shadow: 2px 2px 8px #000;
 }
@@ -196,14 +200,14 @@
   }
 
   .masthead h1 {
-    font-size: 6.5rem;
+    font-size: 7.5rem;
     line-height: 6.5rem;
     letter-spacing: .8rem
   }
 
   .masthead h3 {
     max-width: 30rem;
-    font-size: 1.25rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -262,7 +266,7 @@
 }
 
 .contact-section .card h4 {
-  font-size: 16px;
+  font-size: 20px;
   font-family:'Varela Round';
   text-transform:uppercase;
   letter-spacing:.15rem;
@@ -299,7 +303,7 @@
 }
 
 body {
-  letter-spacing: .0625em;
+  /* letter-spacing: .0625em; */
   padding-bottom: 5em;
   background:#161616
 }

@@ -49,7 +49,7 @@ function downloadSelfie() {
 
 function saveSelfieToProfile() {
     const img = document.getElementById('selfie-image');
-
+    
     fetch(img.src)
         .then(res => res.blob())
         .then(blob => {

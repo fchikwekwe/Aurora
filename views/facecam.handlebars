@@ -87,22 +87,19 @@
     {{!-- user settings --}}
     <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
 
-    {{!-- separator --}}
-     {{!-- <div class="item nothing" ></div> --}}
-
 
 
     {{!-- snap-share-social --}}
-    <div class="item" title="Send to Twitter" id="social">
+    <div class="item social" title="Send to Twitter" id="social">
       <i class="fab fa-twitter" onclick="sendTweet();"></i>
     </div>
-    <div class="item" title="Send to Facebook" id="social">
+    <div class="item social" title="Send to Facebook" id="social">
       <i class="fab fa-facebook-square"></i>
     </div>
-    <div class="item" title="Send to Instagram" id="social">
+    <div class="item social" title="Send to Instagram" id="social">
       <i class="fab fa-instagram"></i>
     </div>
-    <div class="item" "Send to Snapchat" id="social">
+    <div class="item social" title ="Send to Snapchat" id="social">
       <i class="fab fa-snapchat-ghost"></i>
     </div>
   </div>
@@ -188,7 +185,8 @@
   </div>
 
   <div id="emailForm">
-        <!-- <form action="#">
+    
+        {{!-- <form action="#">
             <p>Where would you like us to send this photo?</p>
             {{#if currentUser}}
               <input id="userEmail" type="email" placeholder="Enter a valid email address" value={{user.email}}>
@@ -196,7 +194,7 @@
               <input id="userEmail" type="email" placeholder="Enter a valid email address">
             {{/if}}
             <input id="formBtn" type="submit">
-        </form> -->
+        </form> --}}
   </div>
   <div class="item" title="Download Image">
       <a id="downloadSelfie" download="aurora_selfie.png">

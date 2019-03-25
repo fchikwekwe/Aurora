@@ -96,6 +96,10 @@ div.item {
   font-size: 20px;
 }
 
+/* div.social {
+  visibility: hidden;
+} */
+
 div.item.bottom {
   position: absolute;
   bottom: 0;
@@ -114,10 +118,7 @@ div.heading {
 div.item:hover {
   background-color:  rgb(167, 37, 59) ;
   cursor: pointer;
-}
-
-div.item.nothing {
-  background-color: #333
+  visibility: visible;
 }
 
 div.side-panel {

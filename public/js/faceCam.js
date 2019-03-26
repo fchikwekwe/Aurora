@@ -64,7 +64,7 @@ $(document).ready(function() {
     run()
 })
 
-// Side Panel Dashboard
+// Left Panel Dashboard
 let EventHandler = {
     ShowHideSideBar: function(){
         if (document.getElementById("side-panel").className.indexOf("open") !== -1){

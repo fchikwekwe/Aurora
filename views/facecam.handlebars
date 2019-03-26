@@ -1,11 +1,4 @@
-<script src="js/face-api.js"></script>
-<!-- Custom Script for Face-API -->
-<script src="js/takeSelfie.js"></script>
-<script src="js/faceCam.js"></script>
-{{!-- Face-API.js Scripts --}}
-<script src="js/commons.js"></script>
-<script src="js/drawing.js"></script>
-<script src="js/faceDetectionControls.js"></script>
+
 
 <!-- Materialize -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
@@ -19,41 +12,15 @@
 
 {{!-- side panel dashboard --}}
 <div class="side-panel" id="side-panel">
-
-  <div id="sidepanel-heading" class="heading">
-     {{#if currentUser}}
-     <span id="content-heading">{{{user.firstname}}}'s photos</span>
-     {{else}}
-    <span id="content-heading">USER PHOTOS</span>
-    {{/if}}
+  <div class="show-default">
+    <p>Click on the side panel buttons<br>
+    to view your profile info.</p>
+    <hr>
   </div>
-
-    {{! -- This is the default for side panel --}}
-    <!-- {{#if currentUser}}
-        <div class="row photoRows">
-            {{#if user.photo1}}
-                <img src="{{user.photo1.urlString}}" alt="User's saved photo1" class="profilePhotos">
-            {{/if}}
-            {{#if user.photo2}}
-                <img src="{{user.photo2.urlString}}" alt="User's saved photo2" class="profilePhotos">
-            {{/if}}
-        </div>
-        <div class="row photoRows">
-            {{#if user.photo3}}
-                <img src="{{user.photo3.urlString}}" alt="User's saved photo3" class="profilePhotos">
-            {{/if}}
-            {{#if user.photo4}}
-                <img src="{{user.photo4.urlString}}" alt="User's saved photo4" class="profilePhotos">
-            {{/if}}
-        </div>
-    {{else}}
-    <a class="side-panel-signup" href="/login-sign-up">
-        <p>Login In/Sign Up to see</p>
-        <p>your saved photos here!</p>
-    </a>
-    {{/if}} -->
-
-
+  <div class="preferences">
+        <div id="sidepanel-heading" class="heading">
+      <span id="content-heading">PREFERENCES</span>
+    </div>
     {{! -- This goes under the user button on side panel --}}
     {{#if currentUser}}
     <div class="row photoRows">
@@ -75,36 +42,97 @@
         </div>
     {{else}}
         <a class="side-panel-signup" href="/login-signup">
-          <p>Login or signup to see your</p>
-          <p>profile information here</p>
+          <p>Login or signup to see your</br>profile information here!</p>
         </a>
     {{/if}}
+  </div>
+  <div class="photos">
+    <div id="sidepanel-heading" class="heading">
+      {{#if currentUser}}
+      <span id="content-heading">{{{user.firstname}}}'s photos</span>
+      {{else}}
+      <span id="content-heading">USER PHOTOS</span>
+      {{/if}}
+    </div>
 
+      {{! -- This is the default for side panel --}}
+      {{#if currentUser}}
+          <div class="row photoRows">
+              {{#if user.photo1}}
+                  <img src="{{user.photo1.urlString}}" alt="User's saved photo1" class="profilePhotos">
+              {{else}}
+              <p>You don't have any<br>
+              photos yet!</p>
+              {{/if}}
+              {{#if user.photo2}}
+                  <img src="{{user.photo2.urlString}}" alt="User's saved photo2" class="profilePhotos">
+              {{/if}}
+          </div>
+          <div class="row photoRows">
+              {{#if user.photo3}}
+                  <img src="{{user.photo3.urlString}}" alt="User's saved photo3" class="profilePhotos">
+              {{/if}}
+              {{#if user.photo4}}
+                  <img src="{{user.photo4.urlString}}" alt="User's saved photo4" class="profilePhotos">
+              {{/if}}
+          </div>
+      {{else}}
+      <a class="side-panel-signup" href="/login-sign-up">
+          <p>Login In/Sign Up to see</br>your saved photos here!</p>
+      </a>
+      {{/if}}
 
+  </div>
+
+  <div class="twitter">
+    <div id="sidepanel-heading" class="heading">
+      <span id="content-heading">TWITTER</span>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <p> Coming soon!</p>
+  </div>
+<div class="facebook">
+  <div id="sidepanel-heading" class="heading">
+      <span id="content-heading">FACEBOOK</span>
+      <i class="fab fa-facebook-square"></i>
+    </div>
+    <p> Coming soon!</p>
+
+  </div>
+  <div class="instagram">
+    <div id="sidepanel-heading" class="heading">
+      <span id="content-heading">INSTAGRAM</span>
+    <i class="fab fa-instagram"></i>
+    </div>
+    <p>Coming soon!</p>
+  </div>
+  {{!-- <div class="imgur">
+    <p>coming soon!</p>
+  </div> --}}
   <div data-position="left" class="side-bar">
     <div class="item top" id="show_hide"><i class="fa fa-angle-double-right"></i></div>
     {{!-- user settings --}}
-    <div class="item" title="Preferences" ><i class="fa fa-user"></i></div>
+    <div class="item" title="Preferences" id="preferences" ><i class="fa fa-user"></i></div>
   
-    <div class="item" title="Show my Photos">
+    <div class="item" title="Show my Photos" id="photos">
       <i class="far fa-images"></i>
     </div>
 
 
-    {{!-- snap-share-social --}}
-    <div class="item social" title="Send to Twitter" id="social">
-      <i class="fab fa-twitter" onclick="sendTweet();"></i>
-    </div>
-    <div class="item social" title="Send to Facebook" id="social">
-      <i class="fab fa-facebook-square"></i>
-    </div>
-    <div class="item social" title="Send to Instagram" id="social">
-      <i class="fab fa-instagram"></i>
-    </div>
-    <div class="item social" title ="Send to Snapchat" id="social">
-      <i class="fab fa-snapchat-ghost"></i>
-    </div>
+      {{!-- snap-share-social --}}
+  <div class="item social" title="Send to Twitter" id="twitter">
+    <i class="fab fa-twitter"></i>
   </div>
+  <div class="item social" title="Send to Facebook" id="facebook">
+    <i class="fab fa-facebook-square"></i>
+  </div>
+  <div class="item social" title="Send to Instagram" id="instagram">
+    <i class="fab fa-instagram"></i>
+  </div>
+  {{!-- <div class="item social" title ="Send to Snapchat" id="snapchat">
+    <i class="fab fa-snapchat-ghost"></i>
+  </div> --}}
+</div>
 
 
 </div> {{!-- end-side-panel --}}
@@ -134,7 +162,6 @@
         left: 0;
         top: 0;
         margin: 0;
-        box-shadow: 3px 4px rgba(255, 255, 255, 0.1);
       }
 
       .hideme {
@@ -172,17 +199,6 @@
   </div> -->
   <!-- check boxes -->
 
-  <!-- <div id="selfie-buttons">
-      <button type="button" id="takeSelfie" onclick="takeSelfie();">
-          Take Selfie
-      </button>
-      <button type="button" id="saveSelfie" onclick="saveSelfieToProfile();">
-          Save to Profile
-      </button> -->
-      <!-- <button type="button" onclick="javascript: window.location.href='{{mailTo}}'">
-          Email Photo
-      </button>
-  </div> --> {{!--end selfie-buttons --}}
 
 </div>
 
@@ -194,7 +210,7 @@
 
 <div id="picture-buttons">
 
-  <div class="item" id="face-toggle-button" title="Show/Hide Landmarks" style="display:visible;">
+  <div class="item" id="face-toggle-button" title="Show/Hide Bounding Box" style="display:visible;">
     <i class="far fa-eye-slash"></i>
   </div>
   <div class="item" title="Take a Selfie" onclick="takeSelfie();">
@@ -243,4 +259,11 @@
   </div>
 </div>
 
-{{!-- playing with side bar --}}
+{{!-- Face-API.js Scripts --}}
+<script src="js/commons.js"></script>
+<script src="js/drawing.js"></script>
+<script src="js/faceDetectionControls.js"></script>
+<!-- Custom Script for Face-API -->
+<script src="js/face-api.js"></script>
+<script src="js/takeSelfie.js"></script>
+<script src="js/faceCam.js"></script>

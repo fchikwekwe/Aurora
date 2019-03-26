@@ -1,7 +1,7 @@
 # Aurora: The Digital Mirror
 
 ## About
-Aurora is the modern way to get dolled up! Star this repo for updates. Check out the [live version here](#live).
+Aurora is the modern way to get dolled up! Star this repo for updates. Check out the live version at [bit.ly/aurora-app](https://auroramirror.herokuapp.com).
 
 ## Table of contents
 * [Getting Started](#getting-started)
@@ -23,6 +23,7 @@ The compiled project can be run with the command `npm start`. Press `Ctrl + C` t
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/fchikwekwe/FaceSpace/blob/dev/LICENSE) file for details
 
 ## Screenshot
+![Screen Shot 2019-03-25 at 1 11 26 PM](https://user-images.githubusercontent.com/26418542/54982265-ae89c100-4f67-11e9-9441-a86d6e40248d.png)
 
 ## Planning documents
 * [ERD w/ LucidChart](https://www.lucidchart.com/documents/edit/97a299c1-4228-445b-9895-d0371d1ef5b8?shared=true&)

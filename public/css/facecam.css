@@ -1,39 +1,36 @@
 * {
-    font-family: 'Varela Round'
+    font-family: 'Varela Round';
 }
 
-#inputVideo {
-    position: absolute;
-    top: 12em;
-    left: 25%;
-    z-index: -1;
-    box-shadow: 3px 4px rgba(255, 255, 255, 0.1);
-  }
+#selfie-image {
+  width: 256px;
+  height: 192px;
+  position: absolute;
+  left: 12em;
+  top: -51em;
+  margin: 64em;
+}
 
-  #selfie-image {
-    width: 256px;
-    height: 192px;
-    position: absolute;
-    left: 12em;
-    top: -51em;
-    margin: 64em;
-  }
+#inputVideo {	
+  position: absolute;	
+  top: 12em;	
+  left: 25%;	
+  z-index: -1;	
+  box-shadow: 3px 4px rgba(255, 255, 255, 0.1);	
+}
 
-  #selfie-buttons {
-    position: relative;
-    margin-left: 50%;
-  }
+#selfie-buttons {
+  position: relative;
+  margin-left: 50%;
+}
 
-  input[type=checkbox]:checked~#overlay {
-      display: none;
-  }
+input[type=checkbox]:checked~#overlay {
+    display: none;
+}
 
 #hideLandmarks {
     z-index: 2;
 }
-  .faceCam {
-      z-index: -1;
-  }
 
   .checkbox {
     margin-left: 25em;
@@ -55,7 +52,7 @@
 }
 
 body {
-  /* min-height: 100%; */
+  min-height: 100%;
   width: 100%;
   margin: 0 auto;
   margin-top: 95px
@@ -87,21 +84,19 @@ body {
   border-bottom-left-radius: 6px;
   overflow: hidden;
 }
-
 div.item {
+  background-color: #444;
+}
+
+div.item, i {
   color: white;
   height: 64px;
   width: 64px;
-  background-color: #444;
   line-height: 64px;
   text-align: center;
   font-size: 20px;
   margin-right: 0
 }
-
-/* div.social {
-  visibility: hidden;
-} */
 
 div.item.bottom {
   position: absolute;
@@ -122,7 +117,7 @@ div.item:hover {
   background-color:  rgb(167, 37, 59) ;
   cursor: pointer;
   visibility: visible;
-}
+} 
 
 div.side-panel {
   z-index: 999;
@@ -169,19 +164,6 @@ div.side-panel.close{
   }
 }
 
-.faceContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* side-button-container */
-
-#overlay {
-  margin-left: 80px;
-  margin-top: 120px;
-}
-
 /* rightside */
 
 #picture-buttons {
@@ -193,4 +175,29 @@ div.side-panel.close{
           transform: translateY(-50%);
   background-color: rgba(0,0,0,0.1);
   box-shadow: 0 5px 14px 3px rgba(0,0,0,0.2);
+}
+
+.photos, .preferences, .twitter, .facebook, .instagram {
+  display: none;
+}
+.show-photos .photos {
+  display: block;
+}
+
+.show-preferences .preferences {
+  display: block;
+}
+  .show-twitter .twitter {
+  display: block;
+}
+.show-facebook .facebook {
+  display: block;
+}
+.show-instagram .instagram {
+  display: block;
+}
+
+p, h4{
+  color: white;
+  margin: 10px;
 }

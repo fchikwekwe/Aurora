@@ -64,9 +64,15 @@ $(document).ready(function() {
     run()
 })
 
-// Side Panel Dashboard
+$('#show_hide').click(function(e) {
+
+})
+
+// Left Panel Dashboard
 let EventHandler = {
     ShowHideSideBar: function(){
+
+
         if (document.getElementById("side-panel").className.indexOf("open") !== -1){
             document.getElementById("side-panel").className = "side-panel"
             document.getElementById("side-panel").className += " close"
@@ -83,3 +89,9 @@ let EventHandler = {
 window.onload = () => {
     document.getElementById('show_hide').onclick = EventHandler.ShowHideSideBar
 }
+
+$('body').on('click', 'div#preferences, div#photos, div#twitter, div#facebook, div#instagram', function(e) {
+    const id =$(this).attr('id')
+    $('#side-panel').removeClass('show-default show-preferences show-photos show-twitter show-facebook show-instagram')
+    $('#side-panel').addClass(`show-${id}`)
+})

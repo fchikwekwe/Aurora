@@ -74,7 +74,19 @@ module.exports = (app) => {
                 updateFailure
             })
         }
+    })
 
+    // DELETE USER PROFILE
+    app.delete('/users/delete', (req, res) => {
+        if (req.user) {
+            User.deleteOne(req.user._id)
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                })
+        }
     })
 
     app.post('/users/email', async(req, res) => {

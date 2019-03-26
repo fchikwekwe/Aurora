@@ -29,7 +29,7 @@
   </div>
 
     {{! -- This is the default for side panel --}}
-    {{#if currentUser}}
+    <!-- {{#if currentUser}}
         <div class="row photoRows">
             {{#if user.photo1}}
                 <img src="{{user.photo1.urlString}}" alt="User's saved photo1" class="profilePhotos">
@@ -51,10 +51,11 @@
         <p>Login In/Sign Up to see</p>
         <p>your saved photos here!</p>
     </a>
-    {{/if}}
-
+    {{/if}} -->
+</div>
+<div class="side-panel-profile">
     {{! -- This goes under the user button on side panel --}}
-      <!-- <div id="sidepanel-heading" class="heading">
+      <div id="sidepanel-heading" class="heading">
         <span id="content-heading">USER PHOTOS</span>
       </div>
     {{#if currentUser}}
@@ -70,14 +71,18 @@
 
         </div>
         <div class="row photoRows">
-            <button type="submit" class="button button-block btn-danger"/>Delete Your Profile</button>
+            <!-- Update to have modal with delete confirmation -->
+            <form class="" action="/users/delete?_method=DELETE" method="POST">
+                <button type="submit" class="button button-block btn-danger"/>Delete Your Profile</button>
+            </form>
         </div>
     {{else}}
         <a class="side-panel-signup" href="/login-signup">
           <p>Login or signup to see your</p>
           <p>profile information here</p>
         </a>
-    {{/if}} -->
+    {{/if}}
+</div>
 
 
   {{!-- This is where you put the user dashboard items --}}
@@ -104,8 +109,8 @@
     </div>
   </div>
 
-
-</div> {{!-- end-side-panel --}}
+<!-- </div>  -->
+{{!-- end-side-panel --}}
 <div class="faceContainer">
 
   <div class="face-scan">
@@ -156,7 +161,7 @@
       {{#if updateFailure}}
         <p style="color:rgba(167, 37, 59, 0.7);">{{updateFailure}}</p>
       {{/if}}
-    
+
   </div>
 
 
@@ -215,7 +220,7 @@
   <div class="item" onclick="emailSelfie();">
     <i class="fas fa-at" id="emailContact"></i>
   </div>
-  
+
   <div class="item" title="Zoom">
     <i class="fas fa-search-plus"></i>
   </div>
@@ -226,7 +231,7 @@
 
 
   <div id="emailForm">
-    
+
         {{!-- <form action="#">
             <p>Where would you like us to send this photo?</p>
             {{#if currentUser}}

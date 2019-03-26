@@ -108,10 +108,11 @@
 
 
 </div> {{!-- end-side-panel --}}
+
 <div class="faceContainer">
 
   <div class="face-scan">
-    <canvas id="overlay" style="display:visible;" class=""></canvas>
+    <canvas id="overlay" style="display:visible;"></canvas>
     <video onplay="onPlay(this)" alt="Please check your camera" id="inputVideo" autoplay muted></video>
 
     <style>
@@ -133,6 +134,7 @@
         left: 0;
         top: 0;
         margin: 0;
+        box-shadow: 3px 4px rgba(255, 255, 255, 0.1);
       }
 
       .hideme {
@@ -205,16 +207,16 @@
       </a>
   </div>
   {{#if currentUser}}
-      <div class="item" "Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
+      <div class="item" title="Save to Profile" id="saveSelfie" onclick="saveSelfieToProfile();">
       <i class="fas fa-folder"></i>
     </div>
   {{else}}
-    <div class="item"><a class="item" "Save to Profile" href="/login-signup">
+    <div class="item" title="Save to Profile"><a  href="/login-signup">
       <i class="fas fa-folder"></i> </a>
     </div>
   {{/if }}
 
-  <div class="item" onclick="emailSelfie();">
+  <div class="item" onclick="emailSelfie();" title="Email your photo">
     <i class="fas fa-at" id="emailContact"></i>
   </div>
   
@@ -240,3 +242,5 @@
         </form> --}}
   </div>
 </div>
+
+{{!-- playing with side bar --}}

@@ -1,7 +1,7 @@
 # Aurora: The Digital Mirror
 
 ## About
-Aurora is the modern way to get dolled up! Star this repo for updates. Check out the [live version here](auroramirror.herokuapp.com).
+Aurora is the modern way to get dolled up! Star this repo for updates. Check out the live version at [bit.ly/aurora-app](https://auroramirror.herokuapp.com).
 
 ## Table of contents
 * [Getting Started](#getting-started)

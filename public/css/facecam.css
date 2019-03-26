@@ -16,7 +16,6 @@
   top: 12em;	
   left: 25%;	
   z-index: -1;	
-  box-shadow: 3px 4px rgba(255, 255, 255, 0.1);	
 }
 
 #selfie-buttons {
@@ -200,4 +199,12 @@ div.side-panel.close{
 p, h4{
   color: white;
   margin: 10px;
+  font-size: 18px;
+}
+
+span#content-heading {
+  color: rgb(167, 37, 59);
+  text-transform: uppercase;
+  text-shadow: 2px 1px rgba(5,5,5)
+
 }

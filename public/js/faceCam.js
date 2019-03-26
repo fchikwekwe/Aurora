@@ -1,6 +1,6 @@
 
 let forwardTimes = []
-let withBoxes = true
+let withBoxes = false
 
 function onChangeHideBoundingBoxes(e) {
     withBoxes = !$(e.target).prop('checked')

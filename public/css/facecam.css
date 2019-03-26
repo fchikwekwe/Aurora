@@ -11,11 +11,11 @@
   margin: 64em;
 }
 
-#inputVideo {	
-  position: absolute;	
-  top: 12em;	
-  left: 25%;	
-  z-index: -1;	
+#inputVideo {
+  position: absolute;
+  top: 12em;
+  left: 25%;
+  z-index: -1;
 }
 
 #selfie-buttons {
@@ -109,6 +109,7 @@ div.heading {
   line-height: 44px;
   font-weight: 700;
   padding: 10px;
+  margin-bottom: 0px;
   background-color: #333;
 }
 
@@ -116,7 +117,7 @@ div.item:hover {
   background-color:  rgb(167, 37, 59) ;
   cursor: pointer;
   visibility: visible;
-} 
+}
 
 div.side-panel {
   z-index: 999;
@@ -199,6 +200,7 @@ div.side-panel.close{
 p, h4{
   color: white;
   margin: 10px;
+  padding: 0px 20px;
   font-size: 18px;
 }
 
@@ -206,5 +208,5 @@ span#content-heading {
   color: rgb(167, 37, 59);
   text-transform: uppercase;
   text-shadow: 2px 1px rgba(5,5,5)
-
+  padding: 0px 20px;
 }

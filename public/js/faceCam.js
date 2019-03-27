@@ -13,15 +13,10 @@ function updateTimeStats(timeInMs) {
     $('#fps').val(`${faceapi.round(1000 / avgTimeInMs)}`)
 }
 
-// var hideFace = false
-$('body').on('click', '#face-toggle-button', function(e) {
-    $('#overlay').toggle();
-})
-
 async function onPlay() {
     const videoEl = $('#inputVideo').get(0)
 
-    // if (hideFace) return 
+    // if (hideFace) return
 
     if(videoEl.paused || videoEl.ended || !isFaceDetectionModelLoaded())
         return setTimeout(() => onPlay())
@@ -59,13 +54,8 @@ async function run() {
 function updateResults() {}
 
 $(document).ready(function() {
-    // renderNavBar('#navbar', 'webcam_face_landmark_detection')
     initFaceDetectionControls()
     run()
-})
-
-$('#show_hide').click(function(e) {
-
 })
 
 // Left Panel Dashboard
@@ -79,17 +69,23 @@ let EventHandler = {
             document.getElementById('show_hide').childNodes[0].className = "fa fa-angle-double-right"
             return
         }
-      
+
         document.getElementById("side-panel").className = "side-panel"
         document.getElementById("side-panel").className += " open"
         document.getElementById('show_hide').childNodes[0].className = "fa fa-angle-double-left"
     }
 }
-  
+
 window.onload = () => {
     document.getElementById('show_hide').onclick = EventHandler.ShowHideSideBar
 }
 
+// Toggle the face landmarks on and off
+$('body').on('click', '#face-toggle-button', function(e) {
+    $('#overlay').toggle();
+})
+
+// Side buttons to reveal and show various divs
 $('body').on('click', 'div#preferences, div#photos, div#twitter, div#facebook, div#instagram', function(e) {
     const id =$(this).attr('id')
     $('#side-panel').removeClass('show-default show-preferences show-photos show-twitter show-facebook show-instagram')

@@ -95,3 +95,10 @@ $('body').on('click', 'div#preferences, div#photos, div#twitter, div#facebook, d
     $('#side-panel').removeClass('show-default show-preferences show-photos show-twitter show-facebook show-instagram')
     $('#side-panel').addClass(`show-${id}`)
 })
+
+$(function () {
+    $(document).scroll(function () {
+        var $nav = $("#mainNav");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
+});

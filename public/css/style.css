@@ -80,7 +80,6 @@
 #mainNav .navbar-brand {
   padding: .5rem 0;
   color: rgb(186,34,85);
-  text-shadow: 2px 2px 8px #000;
 }
 
 #mainNav .nav-link {
@@ -88,7 +87,6 @@
   transition: none;
   padding: 0rem 1.5rem;
   color:  white;
-  text-shadow: 2px 2px 8px #000;
 }
 
 #mainNav .nav-link:hover {
@@ -161,7 +159,7 @@
 
 .masthead h1 {
   font-family: 'Varela Round';
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   line-height: 2.5rem;
   letter-spacing: .8rem;
   color: white;
@@ -179,7 +177,7 @@
 
 .masthead h3 {
   max-width: 20rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
   text-shadow: 2px 2px 8px #000;
 }
@@ -278,7 +276,7 @@
 }
 
 .contact-section .social {
-  margin-top:5rem;
+  margin:5rem;
 }
 
 .contact-section .social a{
@@ -301,8 +299,7 @@
 }
 
 body {
-  /* letter-spacing: .0625em; */
-  padding-bottom: 5em;
+  /* padding-bottom: 5em; */
   background:#161616
 }
 

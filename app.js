@@ -1,7 +1,7 @@
 /*
  *  Aurora Main Server
  */
-
+require('@tensorflow/tfjs-node');
 /** Require environment variable(s) */
 require('dotenv').config();
 
@@ -62,7 +62,7 @@ require('./controllers/users')(app);
 
 /** Port listener */
 app.listen(PORT, () => {
-    console.log('FaceSpace listening on port', PORT);
+    console.log('Aurora listening on port', PORT);
 });
 
 module.exports = app;

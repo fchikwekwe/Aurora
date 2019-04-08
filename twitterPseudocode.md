@@ -1,9 +1,11 @@
-- set `currentUser` equal to the user object that you received when the server requested you to start this function
-- set `tweet` equal to the string you would like to tweet
+- set `currentUser` equal to the user object that was received
+- set `tweet` equal to a string
 - check if currentUser has a value
     - if it has no value, then send the user back to the login / signup page
-    - if it has a value, then store Twitter credentials for later use
-- set `requestData` equal to the required url, type of request and string (`tweet`) so that you can send these to Twitter later
+    - if it has a value, then store Twitter credentials for later use (`OAuth`)
+- set `requestData` equal to your request information
 - send Twitter a request with `OAuth` and `requestData`
-- If Twitter successfully accepts your request and sends you a response, then send the user to the Twitter login form where they can give you permission to post to Twitter on their behalf.
+- If Twitter successfully accepts your request and sends you a response:
+    - Then send the user to the Twitter login form
+    - They can give you permission to post to Twitter on their behalf.
 - If there was a problem with the request or receiving a response, then print out the problem

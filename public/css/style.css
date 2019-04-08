@@ -3,28 +3,28 @@
 }
 
 .profilePhotos {
-    /* Height needs to be 75% of width for proper proportions */
-    width: 80%;
-    height: 60%;
-    padding-top: 20px;
+  /* Height needs to be 75% of width for proper proportions */
+  width: 80%;
+  height: 60%;
+  padding-top: 20px;
 }
 
 .photoRows {
-    width: 225px;
+  width: 225px;
 }
 
 .photoRows p {
-    font-size: 80%;
-    overflow-wrap: break-word;
+  font-size: 80%;
+  overflow-wrap: break-word;
 }
 
 .side-panel-signup  p {
-    padding-top: 20px;
-    padding-left: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .button-block {
-    width: 100%;
+  width: 100%;
 }
 
 #mainNav {
@@ -73,6 +73,7 @@
   padding-bottom: 0;
   border-bottom: none;
   background-color: transparent;
+  }
 }
 
 #mainNav .navbar-brand {
@@ -202,6 +203,10 @@
   .masthead h3 {
     max-width: 30rem;
     font-size: 1.7rem;
+  }
+
+  .side-images {
+    background-color: transparent;
   }
 }
 

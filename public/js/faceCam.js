@@ -2,10 +2,12 @@
 let forwardTimes = []
 let withBoxes = false
 
+// Controls checkbox to allow bounding boxes to be visible
 function onChangeHideBoundingBoxes(e) {
     withBoxes = !$(e.target).prop('checked')
 }
 
+// Not in currently in use
 function updateTimeStats(timeInMs) {
     forwardTimes = [timeInMs].concat(forwardTimes).slice(0, 30)
     const avgTimeInMs = forwardTimes.reduce((total, t) => total + t) / forwardTimes.length
@@ -13,6 +15,7 @@ function updateTimeStats(timeInMs) {
     $('#fps').val(`${faceapi.round(1000 / avgTimeInMs)}`)
 }
 
+// Main canvas function that controls live video feed
 async function onPlay() {
     const videoEl = $('#inputVideo').get(0)
 

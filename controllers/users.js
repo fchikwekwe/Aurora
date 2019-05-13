@@ -27,6 +27,7 @@ const nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
 // Twitter package
 const Twitter = require('twitter');
+
 // Define Twitter credentials
 const client = new Twitter({
     consumer_key: process.env.CONSUMER_KEY,
@@ -41,11 +42,11 @@ module.exports = (app) => {
     // ROOT
     app.get('/users-edit', async (req, res) => {
         const currentUser = req.user;
+        // Message to pass to client if not logged in
         const editFailure = 'You need to be logged in to do that!'
 
         if (currentUser) {
             var user = await User.findById(currentUser._id);
-            // console.log(user);
             return res.render('edit', { currentUser, user });
         }
         res.render('facecam', {
@@ -57,9 +58,8 @@ module.exports = (app) => {
     // UPDATE USER PROFILE
     app.put('/users/update', (req, res) => {
         const currentUser = req.user;
+        // Message to pass to client if not logged in
         const updateFailure = 'You need to be logged in to do that!'
-        console.log("REQ BODY", req.body);
-        console.log("ID", req.params.id);
 
         if (currentUser) {
             User.findByIdAndUpdate(currentUser._id, req.body)
@@ -79,6 +79,7 @@ module.exports = (app) => {
     // DELETE USER PROFILE
     app.delete('/users/delete', (req, res) => {
         if (req.user) {
+            // permanently delete 
             User.deleteOne(req.user._id)
                 .then(() => {
                     res.redirect('/');
@@ -92,7 +93,11 @@ module.exports = (app) => {
     app.post('/users/email', async(req, res) => {
         const base64 = req.body.img;
         const email = req.body.email;
+
+        // Successful email message to pass to client
         const emailSuccess = "Your email was successfully sent!";
+
+        // Unsuccessful email message to pass to client
         const emailFailure = "There was a problem send your email."
 
         // AWS credentials

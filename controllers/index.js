@@ -53,9 +53,8 @@ module.exports = (app) => {
 
             await ssd.loadFromDisk(MODELS_URL);
             await tiny.loadFromDisk(MODELS_URL);
-            
+
             res.render('facecam', {
-                // mailTo,
                 currentUser,
                 user
             });

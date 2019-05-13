@@ -2,10 +2,9 @@
 
 const User = require('../models/user');
 
-require('@tensorflow/tfjs-node');
-
-const faceapi = require('../public/js/face-api.js');
-const canvas  = require('canvas');
+require('@tensorflow/tfjs-node'); // for face-api js
+const faceapi = require('../public/js/face-api.js'); // import face-api js 
+const canvas  = require('canvas'); // import canvas
 
 const { Canvas, Image, ImageData } = canvas;
 
@@ -32,8 +31,6 @@ module.exports = (app) => {
                     .populate('photo2')
                     .populate('photo3')
                     .populate('photo4');
-                console.log(user);
-                // console.log("Facecam photo", user.photo1.name);
             }
 
             // Email content
@@ -54,11 +51,9 @@ module.exports = (app) => {
             const ssd = new faceapi.SsdMobilenetv1();
             const tiny = new faceapi.TinyFaceDetector();
 
-            // console.log(faceapi.nets);
             await ssd.loadFromDisk(MODELS_URL);
             await tiny.loadFromDisk(MODELS_URL);
-
-            // console.log(mailTo);
+            
             res.render('facecam', {
                 // mailTo,
                 currentUser,

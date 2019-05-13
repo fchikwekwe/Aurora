@@ -15,11 +15,13 @@ module.exports = (app) => {
     app.post('/sign-up', async (req, res) => {
         let user;
         try {
+            // get the actual User object and save details
             user = new User(req.body);
             console.log(user);
             await user.save();
             // res.redirect
 
+            // create a JWT for successfully signed in user
             let token;
             token = await jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' });
             res.cookie('faceToken', token, {
@@ -29,6 +31,7 @@ module.exports = (app) => {
             console.log("It worked!");
             res.redirect('/faceCam');
         } catch (err) {
+            // handling errors if user fails to sign-in
             const currentUser = req.user;
             const info = { ...req.body };
             if (err.name == 'ValidationError') {
@@ -64,6 +67,7 @@ module.exports = (app) => {
                 });
             }
         }
+        // Check to make sure that password is correct
         user.comparePassword(password, (err, isMatch) => {
             if (!isMatch) {
                 return res.status(401).send({
@@ -72,6 +76,7 @@ module.exports = (app) => {
             } else {
                 // console.log(user, "successfully logged in!")
             }
+            // create a JWT for successfully logged in user
             const token = jwt.sign(
                 {
                     _id: user._id,
@@ -92,6 +97,7 @@ module.exports = (app) => {
 
     // LOGOUT
     app.get('/logout', (req, res) => {
+        // when user logs out, clear tokens and redirect to root
         res.clearCookie('faceToken');
         res.redirect('/');
     });

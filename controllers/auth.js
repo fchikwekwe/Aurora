@@ -17,7 +17,6 @@ module.exports = (app) => {
         try {
             // get the actual User object and save details
             user = new User(req.body);
-            console.log(user);
             await user.save();
             // res.redirect
 
@@ -28,7 +27,6 @@ module.exports = (app) => {
                 maxAge: 900000,
                 httpOnly: true
             });
-            console.log("It worked!");
             res.redirect('/faceCam');
         } catch (err) {
             // handling errors if user fails to sign-in
@@ -48,8 +46,6 @@ module.exports = (app) => {
                     currentUser
                 })
             }
-            console.log("ERR NAME", err.name)
-            console.log(err);
         }
     });
 
@@ -74,7 +70,7 @@ module.exports = (app) => {
                     message: 'Password is not valid!'
                 });
             } else {
-                // console.log(user, "successfully logged in!")
+                // add error handling
             }
             // create a JWT for successfully logged in user
             const token = jwt.sign(

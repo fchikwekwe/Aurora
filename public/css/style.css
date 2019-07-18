@@ -14,17 +14,17 @@
 }
 
 .photoRows p {
-  font-size: 80%;
-  overflow-wrap: break-word;
+    font-size: 80%;
+    overflow-wrap: break-word;
 }
 
 .side-panel-signup  p {
-  padding-top: 20px;
-  padding-left: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .button-block {
-  width: 100%;
+    width: 100%;
 }
 
 #mainNav {
@@ -119,10 +119,9 @@
 }
 
 #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
-    outline: 0;
-    border-bottom: .25rem solid #64a19d;
-  }
+  color: #64a19d;
+  outline: 0;
+  border-bottom: .25rem solid #64a19d;
 }
 
 .masthead {
@@ -131,8 +130,8 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: -webkit-gradient(linear,left top,left bottom,from(rgba(22,22,22,.1)),color-stop(75%,rgba(22,22,22,.5)),to(#161616)),url(../img/makeup-brushes-pink-orange.jpg);
   background:linear-gradient(to bottom,rgba(22,22,22,.1) 0,rgba(22,22,22,.5) 75%,#161616 100%),url(../img/makeup-brushes-pink-orange.jpg);
+  /* background:cross-fade(50% url(../img/makeup-brushes-pink-orange.jpg), url(../img/makeup-brushes-aqua-pink.jpg)); */
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;

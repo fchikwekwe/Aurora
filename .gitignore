@@ -12,6 +12,9 @@
 .eslintrc.json
 .eslintrc
 
+## VSCode##
+.vscode/
+
 # Icon must end with two \r
 Icon
 

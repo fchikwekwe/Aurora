@@ -27,7 +27,7 @@
     "@tensorflow/tfjs-core": "^1.0.2",
     "@tensorflow/tfjs-node": "^3.20.0",
     "aws-sdk": "^2.1354.0",
-    "axios": "^0.21.2",
+    "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "canvas": "^2.4.1",

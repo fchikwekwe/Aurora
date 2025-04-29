@@ -21,7 +21,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "eslint": "^5.15.2",
-    "mocha": "^10.2.0"
+    "mocha": "^10.8.2"
   },
   "dependencies": {
     "@tensorflow/tfjs-core": "^1.0.2",
